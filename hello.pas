@@ -4,4 +4,3 @@ begin
   read;
 end.
 8812391283
-and
