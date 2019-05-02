@@ -21,8 +21,9 @@ tokens = (
     #REGULAR EXPRESSIONS RULES FOR A SIMPLE TOKENS
     'PLUS','MINUS','TIMES','DIVIDE','EQUAL','DISTINT',
     'LESS','GREATER','SEMICOLON','COMMA','LPAREN','RPAREN',
-    'LBRACKET','RBRACKET','LBLOCK','RBLOCK','COLON','AMPERSANT',
+    'LBRACKET','RBRACKET','COLON','AMPERSANT',
     'HASHTAG','DOT','SIMPLE', 'COMMENT', 'OPENCOMMENT','CLOSECOMMENT',
+    'OPENCOMMENT2','CLOSECOMMENT2',
 
     #IDENTIFIER AND NUMBER
     'ID','NUMBER'
@@ -43,8 +44,6 @@ t_LPAREN = r'\('
 t_RPAREN  = r'\)'
 t_LBRACKET = r'\['
 t_RBRACKET = r'\]'
-t_LBLOCK   = r'{'
-t_RBLOCK   = r'}'
 t_COLON   = r':'
 t_AMPERSANT = r'\&'
 t_HASHTAG = r'\#'
@@ -54,6 +53,8 @@ t_STRING = r'\'[a-zA-Z_][a-zA-Z_0-9 ]*\''
 t_COMMENT = r'\//'
 t_OPENCOMMENT = r'\(\*'
 t_CLOSECOMMENT = r'\*\)'
+t_OPENCOMMENT2   = r'{'
+t_CLOSECOMMENT2   = r'}'
 
 
 def t_ABS(t):
