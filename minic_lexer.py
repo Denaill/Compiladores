@@ -22,7 +22,7 @@ tokens = (
     'PLUS','MINUS','TIMES','DIVIDE','EQUAL','DISTINT',
     'LESS','GREATER','SEMICOLON','COMMA','LPAREN','RPAREN',
     'LBRACKET','RBRACKET','LBLOCK','RBLOCK','COLON','AMPERSANT',
-    'HASHTAG','DOT','SIMPLE', 
+    'HASHTAG','DOT','SIMPLE', 'COMMENT', 'OPENCOMMENT','CLOSECOMMENT',
 
     #IDENTIFIER AND NUMBER
     'ID','NUMBER'
@@ -51,6 +51,10 @@ t_HASHTAG = r'\#'
 t_DOT = r'\.'
 t_SIMPLE = r'\''
 t_STRING = r'\'[a-zA-Z_][a-zA-Z_0-9 ]*\''
+t_COMMENT = r'\//'
+#t_COMMENT = r'\//[:space:][a-zA-Z_][a-zA-Z_0-9]*'
+t_OPENCOMMENT = r'\(\*'
+t_CLOSECOMMENT = r'\*\)'
 
 
 def t_ABS(t):
@@ -365,7 +369,7 @@ def t_NUMBER(t):
     return t
 
 def t_ID(t):
-    r'[a-zA-Z_][a-zA-Z_d]*'
+    r'[a-zA-Z_][a-zA-Z_d_0-9]*'
     return t
 
 t_ignore = ' \t'

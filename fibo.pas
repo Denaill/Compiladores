@@ -21,3 +21,7 @@ clrscr;
   end;
  readln;
 end.
+
+//hola soy daniel
+
+(*open*)
