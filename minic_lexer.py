@@ -16,13 +16,13 @@ tokens = (
     'INPUT','LN','MAXINT','NEW','ODD','ORD','OUTPUT','PACK',
     'PAGE','PRED','PUT','READ','READLN','RESET','REWRITE',
     'ROUND','SIN','SQR','SQRT','SUCC','TEXT','TRUE','TRUNC',
-    'UNPACK','WRITE','WRITELN',
+    'UNPACK','WRITE','WRITELN','STRING',
 
     #REGULAR EXPRESSIONS RULES FOR A SIMPLE TOKENS
     'PLUS','MINUS','TIMES','DIVIDE','EQUAL','DISTINT',
     'LESS','GREATER','SEMICOLON','COMMA','LPAREN','RPAREN',
     'LBRACKET','RBRACKET','LBLOCK','RBLOCK','COLON','AMPERSANT',
-    'HASHTAG','DOT','SIMPLE',
+    'HASHTAG','DOT','SIMPLE', 
 
     #IDENTIFIER AND NUMBER
     'ID','NUMBER'
@@ -50,6 +50,8 @@ t_AMPERSANT = r'\&'
 t_HASHTAG = r'\#'
 t_DOT = r'\.'
 t_SIMPLE = r'\''
+t_STRING = r'\'[a-zA-Z_][a-zA-Z_0-9 ]*\''
+
 
 def t_ABS(t):
     r'abs'
@@ -339,6 +341,8 @@ def t_WHILE(t):
     r'while'
     return t
 
+
+
 def t_WITH(t):
     r'with'
     return t
@@ -361,7 +365,7 @@ def t_NUMBER(t):
     return t
 
 def t_ID(t):
-    r'[\w+(_\d\w)*]'
+    r'[a-zA-Z_][a-zA-Z_d]*'
     return t
 
 t_ignore = ' \t'
@@ -378,6 +382,8 @@ def t_comments_C99(t):
 def t_error(t):
     print ("Lexical error: " + str(t.value[0]))
     t.lexer.skip(1)
+
+
     
 def test(data, lexer):
 	lexer.input(data)
@@ -394,7 +400,7 @@ if __name__ == '__main__':
 	if (len(sys.argv) > 1):
 		fin = sys.argv[1]
 	else:
-		fin = 'hello.pas'
+		fin = 'fibo.pas'
 	f = open(fin, 'r')
 	data = f.read()
 	print (data)
