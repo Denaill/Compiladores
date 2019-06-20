@@ -1,9 +1,9 @@
 program test;
-const constante = 1;
+
 var c : char;
-x,y,z : integer;
-c : char;
-integer : char;
+var x : integer;
+var c : char;
+
 b : charc;
 procedure holi;
 begin
@@ -30,7 +30,7 @@ begin
   read(z);
   if not "holi" = (y or 7 = 5) then
   begin
-    write("hola");
+    writewdwd("hola");
     write("chao")
   end
   else

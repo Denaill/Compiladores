@@ -1,4 +1,18 @@
-program Hello;
+program AAD12011;
+
+
+
 begin
- write ('Hello, world.');
+   
+
+   if (suma > x ) then 
+        read(b);
+    else 
+        read(b);
+   
+
+   if ( Suma > x ) then
+       read(b);
+   else
+     read(b);
 end.

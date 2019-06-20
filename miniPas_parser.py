@@ -39,7 +39,8 @@ def p_simple_type (p):
     pass
 # dudas en este identificador
 def p_type_identifier (p):
-    'type_identifier : ID'
+    '''type_identifier : INTEGER
+                       | CHAR'''
     pass
 
 #procedure 
@@ -50,19 +51,20 @@ def p_procedure_declaration_part2 (p):
     'procedure_declaration_part : procedure_declaration'
     pass
 def p_procedure_declaration (p):
-    'procedure_declaration : PROCEDURE ID SEMICOLON block '
+    'procedure_declaration : PROCEDURE ID SEMICOLON block'
     pass
 
 # statement part 
-
+## problema aqui. no reconoce mas de una statement 
 def p_statement_part (p):
     'statement_part : compound_statement'
     pass
-def p_compound_statement (p):
+# revisar 
+""" def p_compound_statement (p):
     'compound_statement : empty'
-    pass
-def p_compound_statement2 (p):
-    'compound_statement : BEGIN statement SEMICOLON statement END'
+    pass """
+def p_compound_statement (p):
+    'compound_statement : BEGIN statement statement3 END DOT'
     pass
 def p_statement (p):
     'statement : simple_statement'
@@ -70,7 +72,19 @@ def p_statement (p):
 def p_statement2 (p):
     'statement : structured_statement'
     pass
+def p_statement3 (p):
+    'statement3 :  SEMICOLON statement'  
+    pass
 
+""" def p_statement3es (p):
+    'statement3 : structured_statement'
+    pass """
+
+def p_statement3e (p):
+    'statement3 : empty'
+    pass
+
+    pass
 # statement 
 def p_simple_statement (p):
     'simple_statement : assignment_statement'
@@ -97,14 +111,14 @@ def p_procedure_statement(p):
 def p_procedure_identifier (p):
     'procedure_identifier : ID'
 def p_read_statement (p):
-    'read_statement : READ LPAREN input_variable COMMA input_variable2 RPAREN'
+    'read_statement : READ LPAREN input_variable input_variable2 RPAREN SEMICOLON'
     pass
 def p_input_variable (p):
     'input_variable : variable'
     pass
 def p_input_variable2 (p):
     '''input_variable2 : empty
-                    | variable'''
+                    | COMMA variable'''
     pass
 def p_write_statement(p):
     'write_statement : WRITE LPAREN output_value COMMA output_value2 RPAREN'
@@ -129,10 +143,10 @@ def p_structured_statement3(p):
     pass
 
 def p_if_statement (p):
-    'if_statement : IF expression THEN statement'
+    'if_statement : IF LPAREN expression RPAREN THEN statement'
     pass
 def p_if_statement2 (p):
-    'if_statement : IF expression THEN statement ELSE statement'
+    'if_statement : IF LPAREN expression RPAREN THEN statement ELSE statement'
     pass
 def p_while_statement(p):
     'while_statement : WHILE expression  DO statement'
@@ -145,18 +159,27 @@ def p_expression2 (p):
     'expression : simple_expression relational_operator simple_expression'
     pass
 def p_simple_expression (p):
-    'simple_expression : sign term  adding_operator term' # ojo aqui, recordad el e
+    'simple_expression : sign term   simple_expression2' # ojo aqui, recordad el e (corregido)
     pass
+# la siguiente parte de la expresion opcional
+def p_simple_expression2 (p):
+    '''simple_expression2 : adding_operator term
+                          | empty'''
+    pass
+
 def p_term (p):
-    'term : factor multiplying_operator factor' # ojo aqui, recordad el e
+    'term : factor term2' # ojo aqui, recordad el e (corregido)
     pass
+def p_term2 (p):
+    '''term2 : multiplying_operator factor
+             | empty'''
 
 def p_factor (p):
     'factor : variable'
     pass
 
 def p_factor2 (p):
-    'factor : ID'''
+    'factor : NUMBER'''
     pass
 def p_factor3 (p):
     'factor : LPAREN expression RPAREN '
@@ -230,7 +253,7 @@ if __name__ == '__main__':
 	if (len(sys.argv) > 1):
 		fin = sys.argv[1]
 	else:
-		fin = 'Sintactico/fibo.pas'
+		fin = 'Sintactico/tests/helloWorld.pas'
 
 	f = open(fin, 'r')
 	data = f.read()

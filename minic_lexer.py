@@ -375,7 +375,7 @@ def t_ID(t):
 t_ignore = ' \t'
     
 def t_error(t):
-    print ("Lexical error: " + str(t.value[0]))
+   # print ("Lexical error: " + str(t.value[0]))
     t.lexer.skip(1)
 
 
@@ -395,7 +395,7 @@ if __name__ == '__main__':
 	if (len(sys.argv) > 1):
 		fin = sys.argv[1]
 	else:
-		fin = 'test/fibo.pas'
+		fin = '/tests/test1.pas'
 	f = open(fin, 'r')
 	data = f.read()
 	print (data)
