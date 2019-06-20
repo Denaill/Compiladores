@@ -89,71 +89,73 @@ Rule 15    procedure_declaration_part -> empty
 Rule 16    procedure_declaration_part -> procedure_declaration
 Rule 17    procedure_declaration -> PROCEDURE ID SEMICOLON block
 Rule 18    statement_part -> compound_statement
-Rule 19    compound_statement -> BEGIN statement statement3 END DOT
+Rule 19    compound_statement -> BEGIN statement END DOT
 Rule 20    statement -> simple_statement
-Rule 21    statement -> structured_statement
-Rule 22    statement3 -> SEMICOLON statement
-Rule 23    statement3 -> empty
-Rule 24    simple_statement -> assignment_statement
-Rule 25    simple_statement -> procedure_statement
-Rule 26    simple_statement -> read_statement
-Rule 27    simple_statement -> write_statement
-Rule 28    assignment_statement -> variable
-Rule 29    assignment_statement -> expression
-Rule 30    procedure_statement -> procedure_identifier
-Rule 31    procedure_identifier -> ID
-Rule 32    read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
-Rule 33    input_variable -> variable
-Rule 34    input_variable2 -> empty
-Rule 35    input_variable2 -> COMMA variable
-Rule 36    write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN
-Rule 37    output_value -> expression
-Rule 38    output_value2 -> empty
-Rule 39    output_value2 -> expression
-Rule 40    structured_statement -> compound_statement
-Rule 41    structured_statement -> if_statement
-Rule 42    structured_statement -> while_statement
-Rule 43    if_statement -> IF LPAREN expression RPAREN THEN statement
-Rule 44    if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement
-Rule 45    while_statement -> WHILE expression DO statement
-Rule 46    expression -> simple_expression
-Rule 47    expression -> simple_expression relational_operator simple_expression
-Rule 48    simple_expression -> sign term simple_expression2
-Rule 49    simple_expression2 -> adding_operator term
-Rule 50    simple_expression2 -> empty
-Rule 51    term -> factor term2
-Rule 52    term2 -> multiplying_operator factor
-Rule 53    term2 -> empty
-Rule 54    factor -> variable
-Rule 55    factor -> NUMBER
-Rule 56    factor -> LPAREN expression RPAREN
-Rule 57    factor -> NOT factor
-Rule 58    relational_operator -> EQUAL
-Rule 59    relational_operator -> DISTINT
-Rule 60    relational_operator -> LESS
-Rule 61    relational_operator -> GREATER
-Rule 62    sign -> PLUS
-Rule 63    sign -> MINUS
-Rule 64    sign -> empty
-Rule 65    adding_operator -> PLUS
-Rule 66    adding_operator -> MINUS
-Rule 67    adding_operator -> OR
-Rule 68    multiplying_operator -> TIMES
-Rule 69    multiplying_operator -> DIV
-Rule 70    multiplying_operator -> AND
-Rule 71    variable -> entire_variable
-Rule 72    variable -> indexed_variable
-Rule 73    indexed_variable -> array_variable LBRACKET expression RBRACKET
-Rule 74    array_variable -> entire_variable
-Rule 75    entire_variable -> variable_identifier
-Rule 76    variable_identifier -> ID
-Rule 77    empty -> <empty>
+Rule 21    statement -> statement SEMICOLON simple_statement
+Rule 22    statement -> statement structured_statement
+Rule 23    statement -> structured_statement
+Rule 24    statement3 -> SEMICOLON statement
+Rule 25    statement3 -> empty
+Rule 26    simple_statement -> assignment_statement
+Rule 27    simple_statement -> procedure_statement
+Rule 28    simple_statement -> read_statement
+Rule 29    simple_statement -> write_statement
+Rule 30    assignment_statement -> variable
+Rule 31    assignment_statement -> expression
+Rule 32    procedure_statement -> procedure_identifier
+Rule 33    procedure_identifier -> ID
+Rule 34    read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
+Rule 35    input_variable -> variable
+Rule 36    input_variable2 -> empty
+Rule 37    input_variable2 -> COMMA variable
+Rule 38    write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN
+Rule 39    output_value -> expression
+Rule 40    output_value2 -> empty
+Rule 41    output_value2 -> expression
+Rule 42    structured_statement -> compound_statement
+Rule 43    structured_statement -> if_statement
+Rule 44    structured_statement -> while_statement
+Rule 45    if_statement -> IF LPAREN expression RPAREN THEN statement
+Rule 46    if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement
+Rule 47    while_statement -> WHILE expression DO statement
+Rule 48    expression -> simple_expression
+Rule 49    expression -> simple_expression relational_operator simple_expression
+Rule 50    simple_expression -> sign term simple_expression2
+Rule 51    simple_expression2 -> adding_operator term
+Rule 52    simple_expression2 -> empty
+Rule 53    term -> factor term2
+Rule 54    term2 -> multiplying_operator factor
+Rule 55    term2 -> empty
+Rule 56    factor -> variable
+Rule 57    factor -> NUMBER
+Rule 58    factor -> LPAREN expression RPAREN
+Rule 59    factor -> NOT factor
+Rule 60    relational_operator -> EQUAL
+Rule 61    relational_operator -> DISTINT
+Rule 62    relational_operator -> LESS
+Rule 63    relational_operator -> GREATER
+Rule 64    sign -> PLUS
+Rule 65    sign -> MINUS
+Rule 66    sign -> empty
+Rule 67    adding_operator -> PLUS
+Rule 68    adding_operator -> MINUS
+Rule 69    adding_operator -> OR
+Rule 70    multiplying_operator -> TIMES
+Rule 71    multiplying_operator -> DIV
+Rule 72    multiplying_operator -> AND
+Rule 73    variable -> entire_variable
+Rule 74    variable -> indexed_variable
+Rule 75    indexed_variable -> array_variable LBRACKET expression RBRACKET
+Rule 76    array_variable -> entire_variable
+Rule 77    entire_variable -> variable_identifier
+Rule 78    variable_identifier -> ID
+Rule 79    empty -> <empty>
 
 Terminals, with rules where they appear
 
 ABS                  : 
 AMPERSANT            : 
-AND                  : 70
+AND                  : 72
 ARCTAN               : 
 ARRAY                : 10
 BEGIN                : 19
@@ -164,22 +166,22 @@ CHR                  :
 CLOSECOMMENT         : 
 CLOSECOMMENT2        : 
 COLON                : 5
-COMMA                : 6 35 36
+COMMA                : 6 37 38
 COMMENT              : 
 CONST                : 
 COS                  : 
 DISPOSE              : 
-DISTINT              : 59
-DIV                  : 69
+DISTINT              : 61
+DIV                  : 71
 DIVIDE               : 
-DO                   : 45
+DO                   : 47
 DOT                  : 11 11 19
 DOWNTO               : 
-ELSE                 : 44
+ELSE                 : 46
 END                  : 19
 EOF                  : 
 EOLN                 : 
-EQUAL                : 58
+EQUAL                : 60
 EXP                  : 
 FALSE                : 
 FILE                 : 
@@ -187,42 +189,42 @@ FOR                  :
 FUNCTION             : 
 GET                  : 
 GOTO                 : 
-GREATER              : 61
+GREATER              : 63
 HASHTAG              : 
-ID                   : 1 5 6 17 31 76
-IF                   : 43 44
+ID                   : 1 5 6 17 33 78
+IF                   : 45 46
 IN                   : 
 INPUT                : 
 INTEGER              : 13
 LABEL                : 
-LBRACKET             : 10 73
-LESS                 : 60
+LBRACKET             : 10 75
+LESS                 : 62
 LN                   : 
-LPAREN               : 32 36 43 44 56
+LPAREN               : 34 38 45 46 58
 MAXINT               : 
-MINUS                : 63 66
+MINUS                : 65 68
 MOD                  : 
 NEW                  : 
 NIL                  : 
-NOT                  : 57
-NUMBER               : 11 11 55
+NOT                  : 59
+NUMBER               : 11 11 57
 ODD                  : 
 OF                   : 10
 OPENCOMMENT          : 
 OPENCOMMENT2         : 
-OR                   : 67
+OR                   : 69
 ORD                  : 
 OUTPUT               : 
 PACK                 : 
 PACKED               : 
 PAGE                 : 
-PLUS                 : 62 65
+PLUS                 : 64 67
 PRED                 : 
 PROCEDURE            : 17
 PROGRAM              : 1
 PUT                  : 
-RBRACKET             : 10 73
-READ                 : 32
+RBRACKET             : 10 75
+READ                 : 34
 READLN               : 
 REAL                 : 
 RECORD               : 
@@ -230,8 +232,8 @@ REPEAT               :
 RESET                : 
 REWRITE              : 
 ROUND                : 
-RPAREN               : 32 36 43 44 56
-SEMICOLON            : 1 4 17 22 32
+RPAREN               : 34 38 45 46 58
+SEMICOLON            : 1 4 17 21 24 34
 SET                  : 
 SIMPLE               : 
 SIN                  : 
@@ -240,8 +242,8 @@ SQRT                 :
 STRING               : 
 SUCC                 : 
 TEXT                 : 
-THEN                 : 43 44
-TIMES                : 68
+THEN                 : 45 46
+TIMES                : 70
 TO                   : 
 TRUE                 : 
 TRUNC                : 
@@ -249,59 +251,59 @@ TYPE                 :
 UNPACK               : 
 UNTIL                : 
 VAR                  : 4
-WHILE                : 45
+WHILE                : 47
 WITH                 : 
-WRITE                : 36
+WRITE                : 38
 WRITELN              : 
 error                : 
 
 Nonterminals, with rules where they appear
 
-adding_operator      : 49
+adding_operator      : 51
 array_type           : 9
-array_variable       : 73
-assignment_statement : 24
+array_variable       : 75
+assignment_statement : 26
 block                : 1 17
-compound_statement   : 18 40
-empty                : 3 7 15 23 34 38 50 53 64
-entire_variable      : 71 74
-expression           : 29 37 39 43 44 45 56 73
-factor               : 51 52 57
-if_statement         : 41
+compound_statement   : 18 42
+empty                : 3 7 15 25 36 40 52 55 66
+entire_variable      : 73 76
+expression           : 31 39 41 45 46 47 58 75
+factor               : 53 54 59
+if_statement         : 43
 index_range          : 10
-indexed_variable     : 72
-input_variable       : 32
-input_variable2      : 32
-multiplying_operator : 52
-output_value         : 36
-output_value2        : 36
+indexed_variable     : 74
+input_variable       : 34
+input_variable2      : 34
+multiplying_operator : 54
+output_value         : 38
+output_value2        : 38
 procedure_declaration : 16
 procedure_declaration_part : 2
-procedure_identifier : 30
-procedure_statement  : 25
+procedure_identifier : 32
+procedure_statement  : 27
 program              : 0
-read_statement       : 26
-relational_operator  : 47
-sign                 : 48
-simple_expression    : 46 47 47
-simple_expression2   : 48
-simple_statement     : 20
+read_statement       : 28
+relational_operator  : 49
+sign                 : 50
+simple_expression    : 48 49 49
+simple_expression2   : 50
+simple_statement     : 20 21
 simple_type          : 8 10
-statement            : 19 22 43 44 44 45
-statement3           : 19
+statement            : 19 21 22 24 45 46 46 47
+statement3           : 
 statement_part       : 2
-structured_statement : 21
-term                 : 48 49
-term2                : 51
+structured_statement : 22 23
+term                 : 50 51
+term2                : 53
 type                 : 5
 type_identifier      : 12
-variable             : 28 33 35 54
+variable             : 30 35 37 56
 variable_declaration : 4
 variable_declaration2 : 5 6
 variable_declaration_part : 2
-variable_identifier  : 75
-while_statement      : 42
-write_statement      : 27
+variable_identifier  : 77
+while_statement      : 44
+write_statement      : 29
 
 Parsing method: LALR
 
@@ -340,11 +342,11 @@ state 4
     (2) block -> . variable_declaration_part procedure_declaration_part statement_part
     (3) variable_declaration_part -> . empty
     (4) variable_declaration_part -> . VAR variable_declaration SEMICOLON
-    (77) empty -> .
+    (79) empty -> .
 
     VAR             shift and go to state 6
-    PROCEDURE       reduce using rule 77 (empty -> .)
-    BEGIN           reduce using rule 77 (empty -> .)
+    PROCEDURE       reduce using rule 79 (empty -> .)
+    BEGIN           reduce using rule 79 (empty -> .)
 
     variable_declaration_part      shift and go to state 5
     block                          shift and go to state 8
@@ -355,10 +357,10 @@ state 5
     (2) block -> variable_declaration_part . procedure_declaration_part statement_part
     (15) procedure_declaration_part -> . empty
     (16) procedure_declaration_part -> . procedure_declaration
-    (77) empty -> .
+    (79) empty -> .
     (17) procedure_declaration -> . PROCEDURE ID SEMICOLON block
 
-    BEGIN           reduce using rule 77 (empty -> .)
+    BEGIN           reduce using rule 79 (empty -> .)
     PROCEDURE       shift and go to state 12
 
     procedure_declaration          shift and go to state 9
@@ -407,12 +409,12 @@ state 11
 
     (2) block -> variable_declaration_part procedure_declaration_part . statement_part
     (18) statement_part -> . compound_statement
-    (19) compound_statement -> . BEGIN statement statement3 END DOT
+    (19) compound_statement -> . BEGIN statement END DOT
 
     BEGIN           shift and go to state 15
 
-    compound_statement             shift and go to state 16
     statement_part                 shift and go to state 17
+    compound_statement             shift and go to state 16
 
 state 12
 
@@ -426,10 +428,10 @@ state 13
     (5) variable_declaration -> ID . variable_declaration2 COLON type
     (6) variable_declaration2 -> . COMMA ID variable_declaration2
     (7) variable_declaration2 -> . empty
-    (77) empty -> .
+    (79) empty -> .
 
     COMMA           shift and go to state 19
-    COLON           reduce using rule 77 (empty -> .)
+    COLON           reduce using rule 79 (empty -> .)
 
     variable_declaration2          shift and go to state 20
     empty                          shift and go to state 21
@@ -443,39 +445,41 @@ state 14
 
 state 15
 
-    (19) compound_statement -> BEGIN . statement statement3 END DOT
+    (19) compound_statement -> BEGIN . statement END DOT
     (20) statement -> . simple_statement
-    (21) statement -> . structured_statement
-    (24) simple_statement -> . assignment_statement
-    (25) simple_statement -> . procedure_statement
-    (26) simple_statement -> . read_statement
-    (27) simple_statement -> . write_statement
-    (40) structured_statement -> . compound_statement
-    (41) structured_statement -> . if_statement
-    (42) structured_statement -> . while_statement
-    (28) assignment_statement -> . variable
-    (29) assignment_statement -> . expression
-    (30) procedure_statement -> . procedure_identifier
-    (32) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
-    (36) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
-    (19) compound_statement -> . BEGIN statement statement3 END DOT
-    (43) if_statement -> . IF LPAREN expression RPAREN THEN statement
-    (44) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
-    (45) while_statement -> . WHILE expression DO statement
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (31) procedure_identifier -> . ID
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (48) simple_expression -> . sign term simple_expression2
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (21) statement -> . statement SEMICOLON simple_statement
+    (22) statement -> . statement structured_statement
+    (23) statement -> . structured_statement
+    (26) simple_statement -> . assignment_statement
+    (27) simple_statement -> . procedure_statement
+    (28) simple_statement -> . read_statement
+    (29) simple_statement -> . write_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (30) assignment_statement -> . variable
+    (31) assignment_statement -> . expression
+    (32) procedure_statement -> . procedure_identifier
+    (34) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
+    (38) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (33) procedure_identifier -> . ID
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (50) simple_expression -> . sign term simple_expression2
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
   ! shift/reduce conflict for ID resolved as shift
     READ            shift and go to state 24
@@ -484,13 +488,13 @@ state 15
     IF              shift and go to state 46
     WHILE           shift and go to state 27
     ID              shift and go to state 45
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
 
-  ! ID              [ reduce using rule 77 (empty -> .) ]
+  ! ID              [ reduce using rule 79 (empty -> .) ]
 
     indexed_variable               shift and go to state 23
     simple_statement               shift and go to state 25
@@ -506,10 +510,10 @@ state 15
     while_statement                shift and go to state 37
     statement                      shift and go to state 38
     read_statement                 shift and go to state 39
-    if_statement                   shift and go to state 40
-    empty                          shift and go to state 41
-    variable                       shift and go to state 44
+    if_statement                   shift and go to state 41
+    empty                          shift and go to state 42
     variable_identifier            shift and go to state 47
+    variable                       shift and go to state 44
     procedure_identifier           shift and go to state 48
     expression                     shift and go to state 49
 
@@ -567,30 +571,33 @@ state 22
 
 state 23
 
-    (72) variable -> indexed_variable .
+    (74) variable -> indexed_variable .
 
-    SEMICOLON       reduce using rule 72 (variable -> indexed_variable .)
-    END             reduce using rule 72 (variable -> indexed_variable .)
-    TIMES           reduce using rule 72 (variable -> indexed_variable .)
-    DIV             reduce using rule 72 (variable -> indexed_variable .)
-    AND             reduce using rule 72 (variable -> indexed_variable .)
-    PLUS            reduce using rule 72 (variable -> indexed_variable .)
-    MINUS           reduce using rule 72 (variable -> indexed_variable .)
-    OR              reduce using rule 72 (variable -> indexed_variable .)
-    EQUAL           reduce using rule 72 (variable -> indexed_variable .)
-    DISTINT         reduce using rule 72 (variable -> indexed_variable .)
-    LESS            reduce using rule 72 (variable -> indexed_variable .)
-    GREATER         reduce using rule 72 (variable -> indexed_variable .)
-    DO              reduce using rule 72 (variable -> indexed_variable .)
-    RPAREN          reduce using rule 72 (variable -> indexed_variable .)
-    RBRACKET        reduce using rule 72 (variable -> indexed_variable .)
-    COMMA           reduce using rule 72 (variable -> indexed_variable .)
-    ELSE            reduce using rule 72 (variable -> indexed_variable .)
+    END             reduce using rule 74 (variable -> indexed_variable .)
+    SEMICOLON       reduce using rule 74 (variable -> indexed_variable .)
+    BEGIN           reduce using rule 74 (variable -> indexed_variable .)
+    IF              reduce using rule 74 (variable -> indexed_variable .)
+    WHILE           reduce using rule 74 (variable -> indexed_variable .)
+    TIMES           reduce using rule 74 (variable -> indexed_variable .)
+    DIV             reduce using rule 74 (variable -> indexed_variable .)
+    AND             reduce using rule 74 (variable -> indexed_variable .)
+    PLUS            reduce using rule 74 (variable -> indexed_variable .)
+    MINUS           reduce using rule 74 (variable -> indexed_variable .)
+    OR              reduce using rule 74 (variable -> indexed_variable .)
+    EQUAL           reduce using rule 74 (variable -> indexed_variable .)
+    DISTINT         reduce using rule 74 (variable -> indexed_variable .)
+    LESS            reduce using rule 74 (variable -> indexed_variable .)
+    GREATER         reduce using rule 74 (variable -> indexed_variable .)
+    DO              reduce using rule 74 (variable -> indexed_variable .)
+    RPAREN          reduce using rule 74 (variable -> indexed_variable .)
+    RBRACKET        reduce using rule 74 (variable -> indexed_variable .)
+    ELSE            reduce using rule 74 (variable -> indexed_variable .)
+    COMMA           reduce using rule 74 (variable -> indexed_variable .)
 
 
 state 24
 
-    (32) read_statement -> READ . LPAREN input_variable input_variable2 RPAREN SEMICOLON
+    (34) read_statement -> READ . LPAREN input_variable input_variable2 RPAREN SEMICOLON
 
     LPAREN          shift and go to state 53
 
@@ -600,24 +607,27 @@ state 25
     (20) statement -> simple_statement .
 
     SEMICOLON       reduce using rule 20 (statement -> simple_statement .)
+    BEGIN           reduce using rule 20 (statement -> simple_statement .)
+    IF              reduce using rule 20 (statement -> simple_statement .)
+    WHILE           reduce using rule 20 (statement -> simple_statement .)
     END             reduce using rule 20 (statement -> simple_statement .)
     ELSE            reduce using rule 20 (statement -> simple_statement .)
 
 
 state 26
 
-    (48) simple_expression -> sign . term simple_expression2
-    (51) term -> . factor term2
-    (54) factor -> . variable
-    (55) factor -> . NUMBER
-    (56) factor -> . LPAREN expression RPAREN
-    (57) factor -> . NOT factor
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
+    (50) simple_expression -> sign . term simple_expression2
+    (53) term -> . factor term2
+    (56) factor -> . variable
+    (57) factor -> . NUMBER
+    (58) factor -> . LPAREN expression RPAREN
+    (59) factor -> . NOT factor
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
 
     NUMBER          shift and go to state 55
     LPAREN          shift and go to state 57
@@ -634,43 +644,46 @@ state 26
 
 state 27
 
-    (45) while_statement -> WHILE . expression DO statement
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (48) simple_expression -> . sign term simple_expression2
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (47) while_statement -> WHILE . expression DO statement
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (50) simple_expression -> . sign term simple_expression2
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
-    ID              reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
+    ID              reduce using rule 79 (empty -> .)
 
     sign                           shift and go to state 26
     simple_expression              shift and go to state 28
     expression                     shift and go to state 61
-    empty                          shift and go to state 41
+    empty                          shift and go to state 42
 
 state 28
 
-    (46) expression -> simple_expression .
-    (47) expression -> simple_expression . relational_operator simple_expression
-    (58) relational_operator -> . EQUAL
-    (59) relational_operator -> . DISTINT
-    (60) relational_operator -> . LESS
-    (61) relational_operator -> . GREATER
+    (48) expression -> simple_expression .
+    (49) expression -> simple_expression . relational_operator simple_expression
+    (60) relational_operator -> . EQUAL
+    (61) relational_operator -> . DISTINT
+    (62) relational_operator -> . LESS
+    (63) relational_operator -> . GREATER
 
-    COMMA           reduce using rule 46 (expression -> simple_expression .)
-    END             reduce using rule 46 (expression -> simple_expression .)
-    RPAREN          reduce using rule 46 (expression -> simple_expression .)
-    RBRACKET        reduce using rule 46 (expression -> simple_expression .)
-    DO              reduce using rule 46 (expression -> simple_expression .)
-    SEMICOLON       reduce using rule 46 (expression -> simple_expression .)
-    ELSE            reduce using rule 46 (expression -> simple_expression .)
+    COMMA           reduce using rule 48 (expression -> simple_expression .)
+    RPAREN          reduce using rule 48 (expression -> simple_expression .)
+    END             reduce using rule 48 (expression -> simple_expression .)
+    SEMICOLON       reduce using rule 48 (expression -> simple_expression .)
+    BEGIN           reduce using rule 48 (expression -> simple_expression .)
+    IF              reduce using rule 48 (expression -> simple_expression .)
+    WHILE           reduce using rule 48 (expression -> simple_expression .)
+    ELSE            reduce using rule 48 (expression -> simple_expression .)
+    RBRACKET        reduce using rule 48 (expression -> simple_expression .)
+    DO              reduce using rule 48 (expression -> simple_expression .)
     EQUAL           shift and go to state 65
     DISTINT         shift and go to state 64
     LESS            shift and go to state 63
@@ -680,233 +693,292 @@ state 28
 
 state 29
 
-    (73) indexed_variable -> array_variable . LBRACKET expression RBRACKET
+    (75) indexed_variable -> array_variable . LBRACKET expression RBRACKET
 
     LBRACKET        shift and go to state 67
 
 
 state 30
 
-    (63) sign -> MINUS .
+    (65) sign -> MINUS .
 
-    NUMBER          reduce using rule 63 (sign -> MINUS .)
-    LPAREN          reduce using rule 63 (sign -> MINUS .)
-    NOT             reduce using rule 63 (sign -> MINUS .)
-    ID              reduce using rule 63 (sign -> MINUS .)
+    NUMBER          reduce using rule 65 (sign -> MINUS .)
+    LPAREN          reduce using rule 65 (sign -> MINUS .)
+    NOT             reduce using rule 65 (sign -> MINUS .)
+    ID              reduce using rule 65 (sign -> MINUS .)
 
 
 state 31
 
-    (40) structured_statement -> compound_statement .
+    (42) structured_statement -> compound_statement .
 
-    SEMICOLON       reduce using rule 40 (structured_statement -> compound_statement .)
-    END             reduce using rule 40 (structured_statement -> compound_statement .)
-    ELSE            reduce using rule 40 (structured_statement -> compound_statement .)
+    END             reduce using rule 42 (structured_statement -> compound_statement .)
+    SEMICOLON       reduce using rule 42 (structured_statement -> compound_statement .)
+    BEGIN           reduce using rule 42 (structured_statement -> compound_statement .)
+    IF              reduce using rule 42 (structured_statement -> compound_statement .)
+    WHILE           reduce using rule 42 (structured_statement -> compound_statement .)
+    ELSE            reduce using rule 42 (structured_statement -> compound_statement .)
 
 
 state 32
 
-    (24) simple_statement -> assignment_statement .
+    (26) simple_statement -> assignment_statement .
 
-    SEMICOLON       reduce using rule 24 (simple_statement -> assignment_statement .)
-    END             reduce using rule 24 (simple_statement -> assignment_statement .)
-    ELSE            reduce using rule 24 (simple_statement -> assignment_statement .)
+    SEMICOLON       reduce using rule 26 (simple_statement -> assignment_statement .)
+    BEGIN           reduce using rule 26 (simple_statement -> assignment_statement .)
+    IF              reduce using rule 26 (simple_statement -> assignment_statement .)
+    WHILE           reduce using rule 26 (simple_statement -> assignment_statement .)
+    END             reduce using rule 26 (simple_statement -> assignment_statement .)
+    ELSE            reduce using rule 26 (simple_statement -> assignment_statement .)
 
 
 state 33
 
-    (25) simple_statement -> procedure_statement .
+    (27) simple_statement -> procedure_statement .
 
-    SEMICOLON       reduce using rule 25 (simple_statement -> procedure_statement .)
-    END             reduce using rule 25 (simple_statement -> procedure_statement .)
-    ELSE            reduce using rule 25 (simple_statement -> procedure_statement .)
+    SEMICOLON       reduce using rule 27 (simple_statement -> procedure_statement .)
+    BEGIN           reduce using rule 27 (simple_statement -> procedure_statement .)
+    IF              reduce using rule 27 (simple_statement -> procedure_statement .)
+    WHILE           reduce using rule 27 (simple_statement -> procedure_statement .)
+    END             reduce using rule 27 (simple_statement -> procedure_statement .)
+    ELSE            reduce using rule 27 (simple_statement -> procedure_statement .)
 
 
 state 34
 
-    (21) statement -> structured_statement .
+    (23) statement -> structured_statement .
 
-    SEMICOLON       reduce using rule 21 (statement -> structured_statement .)
-    END             reduce using rule 21 (statement -> structured_statement .)
-    ELSE            reduce using rule 21 (statement -> structured_statement .)
+    SEMICOLON       reduce using rule 23 (statement -> structured_statement .)
+    BEGIN           reduce using rule 23 (statement -> structured_statement .)
+    IF              reduce using rule 23 (statement -> structured_statement .)
+    WHILE           reduce using rule 23 (statement -> structured_statement .)
+    END             reduce using rule 23 (statement -> structured_statement .)
+    ELSE            reduce using rule 23 (statement -> structured_statement .)
 
 
 state 35
 
-    (27) simple_statement -> write_statement .
+    (29) simple_statement -> write_statement .
 
-    SEMICOLON       reduce using rule 27 (simple_statement -> write_statement .)
-    END             reduce using rule 27 (simple_statement -> write_statement .)
-    ELSE            reduce using rule 27 (simple_statement -> write_statement .)
+    SEMICOLON       reduce using rule 29 (simple_statement -> write_statement .)
+    BEGIN           reduce using rule 29 (simple_statement -> write_statement .)
+    IF              reduce using rule 29 (simple_statement -> write_statement .)
+    WHILE           reduce using rule 29 (simple_statement -> write_statement .)
+    END             reduce using rule 29 (simple_statement -> write_statement .)
+    ELSE            reduce using rule 29 (simple_statement -> write_statement .)
 
 
 state 36
 
-    (71) variable -> entire_variable .
-    (74) array_variable -> entire_variable .
+    (73) variable -> entire_variable .
+    (76) array_variable -> entire_variable .
 
-    SEMICOLON       reduce using rule 71 (variable -> entire_variable .)
-    END             reduce using rule 71 (variable -> entire_variable .)
-    TIMES           reduce using rule 71 (variable -> entire_variable .)
-    DIV             reduce using rule 71 (variable -> entire_variable .)
-    AND             reduce using rule 71 (variable -> entire_variable .)
-    PLUS            reduce using rule 71 (variable -> entire_variable .)
-    MINUS           reduce using rule 71 (variable -> entire_variable .)
-    OR              reduce using rule 71 (variable -> entire_variable .)
-    EQUAL           reduce using rule 71 (variable -> entire_variable .)
-    DISTINT         reduce using rule 71 (variable -> entire_variable .)
-    LESS            reduce using rule 71 (variable -> entire_variable .)
-    GREATER         reduce using rule 71 (variable -> entire_variable .)
-    DO              reduce using rule 71 (variable -> entire_variable .)
-    RPAREN          reduce using rule 71 (variable -> entire_variable .)
-    RBRACKET        reduce using rule 71 (variable -> entire_variable .)
-    COMMA           reduce using rule 71 (variable -> entire_variable .)
-    ELSE            reduce using rule 71 (variable -> entire_variable .)
-    LBRACKET        reduce using rule 74 (array_variable -> entire_variable .)
+    END             reduce using rule 73 (variable -> entire_variable .)
+    SEMICOLON       reduce using rule 73 (variable -> entire_variable .)
+    BEGIN           reduce using rule 73 (variable -> entire_variable .)
+    IF              reduce using rule 73 (variable -> entire_variable .)
+    WHILE           reduce using rule 73 (variable -> entire_variable .)
+    TIMES           reduce using rule 73 (variable -> entire_variable .)
+    DIV             reduce using rule 73 (variable -> entire_variable .)
+    AND             reduce using rule 73 (variable -> entire_variable .)
+    PLUS            reduce using rule 73 (variable -> entire_variable .)
+    MINUS           reduce using rule 73 (variable -> entire_variable .)
+    OR              reduce using rule 73 (variable -> entire_variable .)
+    EQUAL           reduce using rule 73 (variable -> entire_variable .)
+    DISTINT         reduce using rule 73 (variable -> entire_variable .)
+    LESS            reduce using rule 73 (variable -> entire_variable .)
+    GREATER         reduce using rule 73 (variable -> entire_variable .)
+    DO              reduce using rule 73 (variable -> entire_variable .)
+    RPAREN          reduce using rule 73 (variable -> entire_variable .)
+    RBRACKET        reduce using rule 73 (variable -> entire_variable .)
+    ELSE            reduce using rule 73 (variable -> entire_variable .)
+    COMMA           reduce using rule 73 (variable -> entire_variable .)
+    LBRACKET        reduce using rule 76 (array_variable -> entire_variable .)
 
 
 state 37
 
-    (42) structured_statement -> while_statement .
+    (44) structured_statement -> while_statement .
 
-    SEMICOLON       reduce using rule 42 (structured_statement -> while_statement .)
-    END             reduce using rule 42 (structured_statement -> while_statement .)
-    ELSE            reduce using rule 42 (structured_statement -> while_statement .)
+    END             reduce using rule 44 (structured_statement -> while_statement .)
+    SEMICOLON       reduce using rule 44 (structured_statement -> while_statement .)
+    BEGIN           reduce using rule 44 (structured_statement -> while_statement .)
+    IF              reduce using rule 44 (structured_statement -> while_statement .)
+    WHILE           reduce using rule 44 (structured_statement -> while_statement .)
+    ELSE            reduce using rule 44 (structured_statement -> while_statement .)
 
 
 state 38
 
-    (19) compound_statement -> BEGIN statement . statement3 END DOT
-    (22) statement3 -> . SEMICOLON statement
-    (23) statement3 -> . empty
-    (77) empty -> .
+    (19) compound_statement -> BEGIN statement . END DOT
+    (21) statement -> statement . SEMICOLON simple_statement
+    (22) statement -> statement . structured_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
 
-    SEMICOLON       shift and go to state 68
-    END             reduce using rule 77 (empty -> .)
+    END             shift and go to state 68
+    SEMICOLON       shift and go to state 69
+    BEGIN           shift and go to state 15
+    IF              shift and go to state 46
+    WHILE           shift and go to state 27
 
-    statement3                     shift and go to state 70
-    empty                          shift and go to state 69
+    compound_statement             shift and go to state 31
+    structured_statement           shift and go to state 70
+    while_statement                shift and go to state 37
+    if_statement                   shift and go to state 41
 
 state 39
 
-    (26) simple_statement -> read_statement .
+    (28) simple_statement -> read_statement .
 
-    SEMICOLON       reduce using rule 26 (simple_statement -> read_statement .)
-    END             reduce using rule 26 (simple_statement -> read_statement .)
-    ELSE            reduce using rule 26 (simple_statement -> read_statement .)
+    SEMICOLON       reduce using rule 28 (simple_statement -> read_statement .)
+    BEGIN           reduce using rule 28 (simple_statement -> read_statement .)
+    IF              reduce using rule 28 (simple_statement -> read_statement .)
+    WHILE           reduce using rule 28 (simple_statement -> read_statement .)
+    END             reduce using rule 28 (simple_statement -> read_statement .)
+    ELSE            reduce using rule 28 (simple_statement -> read_statement .)
 
 
 state 40
 
-    (41) structured_statement -> if_statement .
+    (64) sign -> PLUS .
 
-    SEMICOLON       reduce using rule 41 (structured_statement -> if_statement .)
-    END             reduce using rule 41 (structured_statement -> if_statement .)
-    ELSE            reduce using rule 41 (structured_statement -> if_statement .)
+    NUMBER          reduce using rule 64 (sign -> PLUS .)
+    LPAREN          reduce using rule 64 (sign -> PLUS .)
+    NOT             reduce using rule 64 (sign -> PLUS .)
+    ID              reduce using rule 64 (sign -> PLUS .)
 
 
 state 41
 
-    (64) sign -> empty .
+    (43) structured_statement -> if_statement .
 
-    NUMBER          reduce using rule 64 (sign -> empty .)
-    LPAREN          reduce using rule 64 (sign -> empty .)
-    NOT             reduce using rule 64 (sign -> empty .)
-    ID              reduce using rule 64 (sign -> empty .)
+    END             reduce using rule 43 (structured_statement -> if_statement .)
+    SEMICOLON       reduce using rule 43 (structured_statement -> if_statement .)
+    BEGIN           reduce using rule 43 (structured_statement -> if_statement .)
+    IF              reduce using rule 43 (structured_statement -> if_statement .)
+    WHILE           reduce using rule 43 (structured_statement -> if_statement .)
+    ELSE            reduce using rule 43 (structured_statement -> if_statement .)
 
 
 state 42
 
-    (62) sign -> PLUS .
+    (66) sign -> empty .
 
-    NUMBER          reduce using rule 62 (sign -> PLUS .)
-    LPAREN          reduce using rule 62 (sign -> PLUS .)
-    NOT             reduce using rule 62 (sign -> PLUS .)
-    ID              reduce using rule 62 (sign -> PLUS .)
+    NUMBER          reduce using rule 66 (sign -> empty .)
+    LPAREN          reduce using rule 66 (sign -> empty .)
+    NOT             reduce using rule 66 (sign -> empty .)
+    ID              reduce using rule 66 (sign -> empty .)
 
 
 state 43
 
-    (36) write_statement -> WRITE . LPAREN output_value COMMA output_value2 RPAREN
+    (38) write_statement -> WRITE . LPAREN output_value COMMA output_value2 RPAREN
 
     LPAREN          shift and go to state 71
 
 
 state 44
 
-    (28) assignment_statement -> variable .
+    (30) assignment_statement -> variable .
 
-    END             reduce using rule 28 (assignment_statement -> variable .)
-    SEMICOLON       reduce using rule 28 (assignment_statement -> variable .)
-    ELSE            reduce using rule 28 (assignment_statement -> variable .)
+    SEMICOLON       reduce using rule 30 (assignment_statement -> variable .)
+    BEGIN           reduce using rule 30 (assignment_statement -> variable .)
+    IF              reduce using rule 30 (assignment_statement -> variable .)
+    WHILE           reduce using rule 30 (assignment_statement -> variable .)
+    END             reduce using rule 30 (assignment_statement -> variable .)
+    ELSE            reduce using rule 30 (assignment_statement -> variable .)
 
 
 state 45
 
-    (31) procedure_identifier -> ID .
-    (76) variable_identifier -> ID .
+    (33) procedure_identifier -> ID .
+    (78) variable_identifier -> ID .
 
-  ! reduce/reduce conflict for SEMICOLON resolved using rule 31 (procedure_identifier -> ID .)
-  ! reduce/reduce conflict for END resolved using rule 31 (procedure_identifier -> ID .)
-  ! reduce/reduce conflict for ELSE resolved using rule 31 (procedure_identifier -> ID .)
-    SEMICOLON       reduce using rule 31 (procedure_identifier -> ID .)
-    END             reduce using rule 31 (procedure_identifier -> ID .)
-    ELSE            reduce using rule 31 (procedure_identifier -> ID .)
-    LBRACKET        reduce using rule 76 (variable_identifier -> ID .)
+  ! reduce/reduce conflict for SEMICOLON resolved using rule 33 (procedure_identifier -> ID .)
+  ! reduce/reduce conflict for BEGIN resolved using rule 33 (procedure_identifier -> ID .)
+  ! reduce/reduce conflict for IF resolved using rule 33 (procedure_identifier -> ID .)
+  ! reduce/reduce conflict for WHILE resolved using rule 33 (procedure_identifier -> ID .)
+  ! reduce/reduce conflict for END resolved using rule 33 (procedure_identifier -> ID .)
+  ! reduce/reduce conflict for ELSE resolved using rule 33 (procedure_identifier -> ID .)
+    END             reduce using rule 33 (procedure_identifier -> ID .)
+    SEMICOLON       reduce using rule 33 (procedure_identifier -> ID .)
+    BEGIN           reduce using rule 33 (procedure_identifier -> ID .)
+    IF              reduce using rule 33 (procedure_identifier -> ID .)
+    WHILE           reduce using rule 33 (procedure_identifier -> ID .)
+    ELSE            reduce using rule 33 (procedure_identifier -> ID .)
+    LBRACKET        reduce using rule 78 (variable_identifier -> ID .)
 
-  ! SEMICOLON       [ reduce using rule 76 (variable_identifier -> ID .) ]
-  ! END             [ reduce using rule 76 (variable_identifier -> ID .) ]
-  ! ELSE            [ reduce using rule 76 (variable_identifier -> ID .) ]
+  ! SEMICOLON       [ reduce using rule 78 (variable_identifier -> ID .) ]
+  ! BEGIN           [ reduce using rule 78 (variable_identifier -> ID .) ]
+  ! IF              [ reduce using rule 78 (variable_identifier -> ID .) ]
+  ! WHILE           [ reduce using rule 78 (variable_identifier -> ID .) ]
+  ! END             [ reduce using rule 78 (variable_identifier -> ID .) ]
+  ! ELSE            [ reduce using rule 78 (variable_identifier -> ID .) ]
 
 
 state 46
 
-    (43) if_statement -> IF . LPAREN expression RPAREN THEN statement
-    (44) if_statement -> IF . LPAREN expression RPAREN THEN statement ELSE statement
+    (45) if_statement -> IF . LPAREN expression RPAREN THEN statement
+    (46) if_statement -> IF . LPAREN expression RPAREN THEN statement ELSE statement
 
     LPAREN          shift and go to state 72
 
 
 state 47
 
-    (75) entire_variable -> variable_identifier .
+    (77) entire_variable -> variable_identifier .
 
-    TIMES           reduce using rule 75 (entire_variable -> variable_identifier .)
-    DIV             reduce using rule 75 (entire_variable -> variable_identifier .)
-    AND             reduce using rule 75 (entire_variable -> variable_identifier .)
-    PLUS            reduce using rule 75 (entire_variable -> variable_identifier .)
-    MINUS           reduce using rule 75 (entire_variable -> variable_identifier .)
-    OR              reduce using rule 75 (entire_variable -> variable_identifier .)
-    EQUAL           reduce using rule 75 (entire_variable -> variable_identifier .)
-    DISTINT         reduce using rule 75 (entire_variable -> variable_identifier .)
-    LESS            reduce using rule 75 (entire_variable -> variable_identifier .)
-    GREATER         reduce using rule 75 (entire_variable -> variable_identifier .)
-    SEMICOLON       reduce using rule 75 (entire_variable -> variable_identifier .)
-    END             reduce using rule 75 (entire_variable -> variable_identifier .)
-    DO              reduce using rule 75 (entire_variable -> variable_identifier .)
-    RPAREN          reduce using rule 75 (entire_variable -> variable_identifier .)
-    RBRACKET        reduce using rule 75 (entire_variable -> variable_identifier .)
-    COMMA           reduce using rule 75 (entire_variable -> variable_identifier .)
-    ELSE            reduce using rule 75 (entire_variable -> variable_identifier .)
-    LBRACKET        reduce using rule 75 (entire_variable -> variable_identifier .)
+    TIMES           reduce using rule 77 (entire_variable -> variable_identifier .)
+    DIV             reduce using rule 77 (entire_variable -> variable_identifier .)
+    AND             reduce using rule 77 (entire_variable -> variable_identifier .)
+    PLUS            reduce using rule 77 (entire_variable -> variable_identifier .)
+    MINUS           reduce using rule 77 (entire_variable -> variable_identifier .)
+    OR              reduce using rule 77 (entire_variable -> variable_identifier .)
+    EQUAL           reduce using rule 77 (entire_variable -> variable_identifier .)
+    DISTINT         reduce using rule 77 (entire_variable -> variable_identifier .)
+    LESS            reduce using rule 77 (entire_variable -> variable_identifier .)
+    GREATER         reduce using rule 77 (entire_variable -> variable_identifier .)
+    END             reduce using rule 77 (entire_variable -> variable_identifier .)
+    SEMICOLON       reduce using rule 77 (entire_variable -> variable_identifier .)
+    BEGIN           reduce using rule 77 (entire_variable -> variable_identifier .)
+    IF              reduce using rule 77 (entire_variable -> variable_identifier .)
+    WHILE           reduce using rule 77 (entire_variable -> variable_identifier .)
+    DO              reduce using rule 77 (entire_variable -> variable_identifier .)
+    RPAREN          reduce using rule 77 (entire_variable -> variable_identifier .)
+    RBRACKET        reduce using rule 77 (entire_variable -> variable_identifier .)
+    ELSE            reduce using rule 77 (entire_variable -> variable_identifier .)
+    COMMA           reduce using rule 77 (entire_variable -> variable_identifier .)
+    LBRACKET        reduce using rule 77 (entire_variable -> variable_identifier .)
 
 
 state 48
 
-    (30) procedure_statement -> procedure_identifier .
+    (32) procedure_statement -> procedure_identifier .
 
-    SEMICOLON       reduce using rule 30 (procedure_statement -> procedure_identifier .)
-    END             reduce using rule 30 (procedure_statement -> procedure_identifier .)
-    ELSE            reduce using rule 30 (procedure_statement -> procedure_identifier .)
+    SEMICOLON       reduce using rule 32 (procedure_statement -> procedure_identifier .)
+    BEGIN           reduce using rule 32 (procedure_statement -> procedure_identifier .)
+    IF              reduce using rule 32 (procedure_statement -> procedure_identifier .)
+    WHILE           reduce using rule 32 (procedure_statement -> procedure_identifier .)
+    END             reduce using rule 32 (procedure_statement -> procedure_identifier .)
+    ELSE            reduce using rule 32 (procedure_statement -> procedure_identifier .)
 
 
 state 49
 
-    (29) assignment_statement -> expression .
+    (31) assignment_statement -> expression .
 
-    END             reduce using rule 29 (assignment_statement -> expression .)
-    SEMICOLON       reduce using rule 29 (assignment_statement -> expression .)
-    ELSE            reduce using rule 29 (assignment_statement -> expression .)
+    SEMICOLON       reduce using rule 31 (assignment_statement -> expression .)
+    BEGIN           reduce using rule 31 (assignment_statement -> expression .)
+    IF              reduce using rule 31 (assignment_statement -> expression .)
+    WHILE           reduce using rule 31 (assignment_statement -> expression .)
+    END             reduce using rule 31 (assignment_statement -> expression .)
+    ELSE            reduce using rule 31 (assignment_statement -> expression .)
 
 
 state 50
@@ -915,11 +987,11 @@ state 50
     (2) block -> . variable_declaration_part procedure_declaration_part statement_part
     (3) variable_declaration_part -> . empty
     (4) variable_declaration_part -> . VAR variable_declaration SEMICOLON
-    (77) empty -> .
+    (79) empty -> .
 
     VAR             shift and go to state 6
-    PROCEDURE       reduce using rule 77 (empty -> .)
-    BEGIN           reduce using rule 77 (empty -> .)
+    PROCEDURE       reduce using rule 79 (empty -> .)
+    BEGIN           reduce using rule 79 (empty -> .)
 
     variable_declaration_part      shift and go to state 5
     block                          shift and go to state 73
@@ -930,10 +1002,10 @@ state 51
     (6) variable_declaration2 -> COMMA ID . variable_declaration2
     (6) variable_declaration2 -> . COMMA ID variable_declaration2
     (7) variable_declaration2 -> . empty
-    (77) empty -> .
+    (79) empty -> .
 
     COMMA           shift and go to state 19
-    COLON           reduce using rule 77 (empty -> .)
+    COLON           reduce using rule 79 (empty -> .)
 
     variable_declaration2          shift and go to state 74
     empty                          shift and go to state 21
@@ -959,14 +1031,14 @@ state 52
 
 state 53
 
-    (32) read_statement -> READ LPAREN . input_variable input_variable2 RPAREN SEMICOLON
-    (33) input_variable -> . variable
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
+    (34) read_statement -> READ LPAREN . input_variable input_variable2 RPAREN SEMICOLON
+    (35) input_variable -> . variable
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
 
     ID              shift and go to state 60
 
@@ -979,28 +1051,31 @@ state 53
 
 state 54
 
-    (48) simple_expression -> sign term . simple_expression2
-    (49) simple_expression2 -> . adding_operator term
-    (50) simple_expression2 -> . empty
-    (65) adding_operator -> . PLUS
-    (66) adding_operator -> . MINUS
-    (67) adding_operator -> . OR
-    (77) empty -> .
+    (50) simple_expression -> sign term . simple_expression2
+    (51) simple_expression2 -> . adding_operator term
+    (52) simple_expression2 -> . empty
+    (67) adding_operator -> . PLUS
+    (68) adding_operator -> . MINUS
+    (69) adding_operator -> . OR
+    (79) empty -> .
 
     PLUS            shift and go to state 85
     MINUS           shift and go to state 87
     OR              shift and go to state 89
-    EQUAL           reduce using rule 77 (empty -> .)
-    DISTINT         reduce using rule 77 (empty -> .)
-    LESS            reduce using rule 77 (empty -> .)
-    GREATER         reduce using rule 77 (empty -> .)
-    SEMICOLON       reduce using rule 77 (empty -> .)
-    END             reduce using rule 77 (empty -> .)
-    DO              reduce using rule 77 (empty -> .)
-    RPAREN          reduce using rule 77 (empty -> .)
-    RBRACKET        reduce using rule 77 (empty -> .)
-    COMMA           reduce using rule 77 (empty -> .)
-    ELSE            reduce using rule 77 (empty -> .)
+    EQUAL           reduce using rule 79 (empty -> .)
+    DISTINT         reduce using rule 79 (empty -> .)
+    LESS            reduce using rule 79 (empty -> .)
+    GREATER         reduce using rule 79 (empty -> .)
+    END             reduce using rule 79 (empty -> .)
+    SEMICOLON       reduce using rule 79 (empty -> .)
+    BEGIN           reduce using rule 79 (empty -> .)
+    IF              reduce using rule 79 (empty -> .)
+    WHILE           reduce using rule 79 (empty -> .)
+    DO              reduce using rule 79 (empty -> .)
+    RPAREN          reduce using rule 79 (empty -> .)
+    RBRACKET        reduce using rule 79 (empty -> .)
+    ELSE            reduce using rule 79 (empty -> .)
+    COMMA           reduce using rule 79 (empty -> .)
 
     simple_expression2             shift and go to state 84
     adding_operator                shift and go to state 86
@@ -1008,40 +1083,43 @@ state 54
 
 state 55
 
-    (55) factor -> NUMBER .
+    (57) factor -> NUMBER .
 
-    TIMES           reduce using rule 55 (factor -> NUMBER .)
-    DIV             reduce using rule 55 (factor -> NUMBER .)
-    AND             reduce using rule 55 (factor -> NUMBER .)
-    EQUAL           reduce using rule 55 (factor -> NUMBER .)
-    DISTINT         reduce using rule 55 (factor -> NUMBER .)
-    LESS            reduce using rule 55 (factor -> NUMBER .)
-    GREATER         reduce using rule 55 (factor -> NUMBER .)
-    SEMICOLON       reduce using rule 55 (factor -> NUMBER .)
-    END             reduce using rule 55 (factor -> NUMBER .)
-    DO              reduce using rule 55 (factor -> NUMBER .)
-    RPAREN          reduce using rule 55 (factor -> NUMBER .)
-    RBRACKET        reduce using rule 55 (factor -> NUMBER .)
-    COMMA           reduce using rule 55 (factor -> NUMBER .)
-    ELSE            reduce using rule 55 (factor -> NUMBER .)
-    PLUS            reduce using rule 55 (factor -> NUMBER .)
-    MINUS           reduce using rule 55 (factor -> NUMBER .)
-    OR              reduce using rule 55 (factor -> NUMBER .)
+    TIMES           reduce using rule 57 (factor -> NUMBER .)
+    DIV             reduce using rule 57 (factor -> NUMBER .)
+    AND             reduce using rule 57 (factor -> NUMBER .)
+    PLUS            reduce using rule 57 (factor -> NUMBER .)
+    MINUS           reduce using rule 57 (factor -> NUMBER .)
+    OR              reduce using rule 57 (factor -> NUMBER .)
+    EQUAL           reduce using rule 57 (factor -> NUMBER .)
+    DISTINT         reduce using rule 57 (factor -> NUMBER .)
+    LESS            reduce using rule 57 (factor -> NUMBER .)
+    GREATER         reduce using rule 57 (factor -> NUMBER .)
+    END             reduce using rule 57 (factor -> NUMBER .)
+    SEMICOLON       reduce using rule 57 (factor -> NUMBER .)
+    BEGIN           reduce using rule 57 (factor -> NUMBER .)
+    IF              reduce using rule 57 (factor -> NUMBER .)
+    WHILE           reduce using rule 57 (factor -> NUMBER .)
+    DO              reduce using rule 57 (factor -> NUMBER .)
+    RPAREN          reduce using rule 57 (factor -> NUMBER .)
+    RBRACKET        reduce using rule 57 (factor -> NUMBER .)
+    ELSE            reduce using rule 57 (factor -> NUMBER .)
+    COMMA           reduce using rule 57 (factor -> NUMBER .)
 
 
 state 56
 
-    (57) factor -> NOT . factor
-    (54) factor -> . variable
-    (55) factor -> . NUMBER
-    (56) factor -> . LPAREN expression RPAREN
-    (57) factor -> . NOT factor
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
+    (59) factor -> NOT . factor
+    (56) factor -> . variable
+    (57) factor -> . NUMBER
+    (58) factor -> . LPAREN expression RPAREN
+    (59) factor -> . NOT factor
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
 
     NUMBER          shift and go to state 55
     LPAREN          shift and go to state 57
@@ -1057,54 +1135,57 @@ state 56
 
 state 57
 
-    (56) factor -> LPAREN . expression RPAREN
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (48) simple_expression -> . sign term simple_expression2
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (58) factor -> LPAREN . expression RPAREN
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (50) simple_expression -> . sign term simple_expression2
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
-    ID              reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
+    ID              reduce using rule 79 (empty -> .)
 
     sign                           shift and go to state 26
     simple_expression              shift and go to state 28
     expression                     shift and go to state 91
-    empty                          shift and go to state 41
+    empty                          shift and go to state 42
 
 state 58
 
-    (51) term -> factor . term2
-    (52) term2 -> . multiplying_operator factor
-    (53) term2 -> . empty
-    (68) multiplying_operator -> . TIMES
-    (69) multiplying_operator -> . DIV
-    (70) multiplying_operator -> . AND
-    (77) empty -> .
+    (53) term -> factor . term2
+    (54) term2 -> . multiplying_operator factor
+    (55) term2 -> . empty
+    (70) multiplying_operator -> . TIMES
+    (71) multiplying_operator -> . DIV
+    (72) multiplying_operator -> . AND
+    (79) empty -> .
 
     TIMES           shift and go to state 94
     DIV             shift and go to state 95
     AND             shift and go to state 92
-    PLUS            reduce using rule 77 (empty -> .)
-    MINUS           reduce using rule 77 (empty -> .)
-    OR              reduce using rule 77 (empty -> .)
-    EQUAL           reduce using rule 77 (empty -> .)
-    DISTINT         reduce using rule 77 (empty -> .)
-    LESS            reduce using rule 77 (empty -> .)
-    GREATER         reduce using rule 77 (empty -> .)
-    SEMICOLON       reduce using rule 77 (empty -> .)
-    END             reduce using rule 77 (empty -> .)
-    DO              reduce using rule 77 (empty -> .)
-    RPAREN          reduce using rule 77 (empty -> .)
-    RBRACKET        reduce using rule 77 (empty -> .)
-    COMMA           reduce using rule 77 (empty -> .)
-    ELSE            reduce using rule 77 (empty -> .)
+    PLUS            reduce using rule 79 (empty -> .)
+    MINUS           reduce using rule 79 (empty -> .)
+    OR              reduce using rule 79 (empty -> .)
+    EQUAL           reduce using rule 79 (empty -> .)
+    DISTINT         reduce using rule 79 (empty -> .)
+    LESS            reduce using rule 79 (empty -> .)
+    GREATER         reduce using rule 79 (empty -> .)
+    END             reduce using rule 79 (empty -> .)
+    SEMICOLON       reduce using rule 79 (empty -> .)
+    BEGIN           reduce using rule 79 (empty -> .)
+    IF              reduce using rule 79 (empty -> .)
+    WHILE           reduce using rule 79 (empty -> .)
+    DO              reduce using rule 79 (empty -> .)
+    RPAREN          reduce using rule 79 (empty -> .)
+    RBRACKET        reduce using rule 79 (empty -> .)
+    ELSE            reduce using rule 79 (empty -> .)
+    COMMA           reduce using rule 79 (empty -> .)
 
     multiplying_operator           shift and go to state 96
     term2                          shift and go to state 93
@@ -1112,283 +1193,277 @@ state 58
 
 state 59
 
-    (54) factor -> variable .
+    (56) factor -> variable .
 
-    TIMES           reduce using rule 54 (factor -> variable .)
-    DIV             reduce using rule 54 (factor -> variable .)
-    AND             reduce using rule 54 (factor -> variable .)
-    EQUAL           reduce using rule 54 (factor -> variable .)
-    DISTINT         reduce using rule 54 (factor -> variable .)
-    LESS            reduce using rule 54 (factor -> variable .)
-    GREATER         reduce using rule 54 (factor -> variable .)
-    SEMICOLON       reduce using rule 54 (factor -> variable .)
-    END             reduce using rule 54 (factor -> variable .)
-    DO              reduce using rule 54 (factor -> variable .)
-    RPAREN          reduce using rule 54 (factor -> variable .)
-    RBRACKET        reduce using rule 54 (factor -> variable .)
-    COMMA           reduce using rule 54 (factor -> variable .)
-    ELSE            reduce using rule 54 (factor -> variable .)
-    PLUS            reduce using rule 54 (factor -> variable .)
-    MINUS           reduce using rule 54 (factor -> variable .)
-    OR              reduce using rule 54 (factor -> variable .)
+    TIMES           reduce using rule 56 (factor -> variable .)
+    DIV             reduce using rule 56 (factor -> variable .)
+    AND             reduce using rule 56 (factor -> variable .)
+    PLUS            reduce using rule 56 (factor -> variable .)
+    MINUS           reduce using rule 56 (factor -> variable .)
+    OR              reduce using rule 56 (factor -> variable .)
+    EQUAL           reduce using rule 56 (factor -> variable .)
+    DISTINT         reduce using rule 56 (factor -> variable .)
+    LESS            reduce using rule 56 (factor -> variable .)
+    GREATER         reduce using rule 56 (factor -> variable .)
+    END             reduce using rule 56 (factor -> variable .)
+    SEMICOLON       reduce using rule 56 (factor -> variable .)
+    BEGIN           reduce using rule 56 (factor -> variable .)
+    IF              reduce using rule 56 (factor -> variable .)
+    WHILE           reduce using rule 56 (factor -> variable .)
+    DO              reduce using rule 56 (factor -> variable .)
+    RPAREN          reduce using rule 56 (factor -> variable .)
+    RBRACKET        reduce using rule 56 (factor -> variable .)
+    ELSE            reduce using rule 56 (factor -> variable .)
+    COMMA           reduce using rule 56 (factor -> variable .)
 
 
 state 60
 
-    (76) variable_identifier -> ID .
+    (78) variable_identifier -> ID .
 
-    TIMES           reduce using rule 76 (variable_identifier -> ID .)
-    DIV             reduce using rule 76 (variable_identifier -> ID .)
-    AND             reduce using rule 76 (variable_identifier -> ID .)
-    EQUAL           reduce using rule 76 (variable_identifier -> ID .)
-    DISTINT         reduce using rule 76 (variable_identifier -> ID .)
-    LESS            reduce using rule 76 (variable_identifier -> ID .)
-    GREATER         reduce using rule 76 (variable_identifier -> ID .)
-    SEMICOLON       reduce using rule 76 (variable_identifier -> ID .)
-    END             reduce using rule 76 (variable_identifier -> ID .)
-    DO              reduce using rule 76 (variable_identifier -> ID .)
-    RPAREN          reduce using rule 76 (variable_identifier -> ID .)
-    RBRACKET        reduce using rule 76 (variable_identifier -> ID .)
-    COMMA           reduce using rule 76 (variable_identifier -> ID .)
-    ELSE            reduce using rule 76 (variable_identifier -> ID .)
-    LBRACKET        reduce using rule 76 (variable_identifier -> ID .)
-    PLUS            reduce using rule 76 (variable_identifier -> ID .)
-    MINUS           reduce using rule 76 (variable_identifier -> ID .)
-    OR              reduce using rule 76 (variable_identifier -> ID .)
+    TIMES           reduce using rule 78 (variable_identifier -> ID .)
+    DIV             reduce using rule 78 (variable_identifier -> ID .)
+    AND             reduce using rule 78 (variable_identifier -> ID .)
+    EQUAL           reduce using rule 78 (variable_identifier -> ID .)
+    DISTINT         reduce using rule 78 (variable_identifier -> ID .)
+    LESS            reduce using rule 78 (variable_identifier -> ID .)
+    GREATER         reduce using rule 78 (variable_identifier -> ID .)
+    END             reduce using rule 78 (variable_identifier -> ID .)
+    SEMICOLON       reduce using rule 78 (variable_identifier -> ID .)
+    BEGIN           reduce using rule 78 (variable_identifier -> ID .)
+    IF              reduce using rule 78 (variable_identifier -> ID .)
+    WHILE           reduce using rule 78 (variable_identifier -> ID .)
+    DO              reduce using rule 78 (variable_identifier -> ID .)
+    RPAREN          reduce using rule 78 (variable_identifier -> ID .)
+    RBRACKET        reduce using rule 78 (variable_identifier -> ID .)
+    ELSE            reduce using rule 78 (variable_identifier -> ID .)
+    COMMA           reduce using rule 78 (variable_identifier -> ID .)
+    LBRACKET        reduce using rule 78 (variable_identifier -> ID .)
+    PLUS            reduce using rule 78 (variable_identifier -> ID .)
+    MINUS           reduce using rule 78 (variable_identifier -> ID .)
+    OR              reduce using rule 78 (variable_identifier -> ID .)
 
 
 state 61
 
-    (45) while_statement -> WHILE expression . DO statement
+    (47) while_statement -> WHILE expression . DO statement
 
     DO              shift and go to state 98
 
 
 state 62
 
-    (47) expression -> simple_expression relational_operator . simple_expression
-    (48) simple_expression -> . sign term simple_expression2
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (49) expression -> simple_expression relational_operator . simple_expression
+    (50) simple_expression -> . sign term simple_expression2
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
-    ID              reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
+    ID              reduce using rule 79 (empty -> .)
 
     sign                           shift and go to state 26
     simple_expression              shift and go to state 99
-    empty                          shift and go to state 41
+    empty                          shift and go to state 42
 
 state 63
 
-    (60) relational_operator -> LESS .
+    (62) relational_operator -> LESS .
 
-    PLUS            reduce using rule 60 (relational_operator -> LESS .)
-    MINUS           reduce using rule 60 (relational_operator -> LESS .)
-    NUMBER          reduce using rule 60 (relational_operator -> LESS .)
-    LPAREN          reduce using rule 60 (relational_operator -> LESS .)
-    NOT             reduce using rule 60 (relational_operator -> LESS .)
-    ID              reduce using rule 60 (relational_operator -> LESS .)
+    PLUS            reduce using rule 62 (relational_operator -> LESS .)
+    MINUS           reduce using rule 62 (relational_operator -> LESS .)
+    NUMBER          reduce using rule 62 (relational_operator -> LESS .)
+    LPAREN          reduce using rule 62 (relational_operator -> LESS .)
+    NOT             reduce using rule 62 (relational_operator -> LESS .)
+    ID              reduce using rule 62 (relational_operator -> LESS .)
 
 
 state 64
 
-    (59) relational_operator -> DISTINT .
+    (61) relational_operator -> DISTINT .
 
-    PLUS            reduce using rule 59 (relational_operator -> DISTINT .)
-    MINUS           reduce using rule 59 (relational_operator -> DISTINT .)
-    NUMBER          reduce using rule 59 (relational_operator -> DISTINT .)
-    LPAREN          reduce using rule 59 (relational_operator -> DISTINT .)
-    NOT             reduce using rule 59 (relational_operator -> DISTINT .)
-    ID              reduce using rule 59 (relational_operator -> DISTINT .)
+    PLUS            reduce using rule 61 (relational_operator -> DISTINT .)
+    MINUS           reduce using rule 61 (relational_operator -> DISTINT .)
+    NUMBER          reduce using rule 61 (relational_operator -> DISTINT .)
+    LPAREN          reduce using rule 61 (relational_operator -> DISTINT .)
+    NOT             reduce using rule 61 (relational_operator -> DISTINT .)
+    ID              reduce using rule 61 (relational_operator -> DISTINT .)
 
 
 state 65
 
-    (58) relational_operator -> EQUAL .
+    (60) relational_operator -> EQUAL .
 
-    PLUS            reduce using rule 58 (relational_operator -> EQUAL .)
-    MINUS           reduce using rule 58 (relational_operator -> EQUAL .)
-    NUMBER          reduce using rule 58 (relational_operator -> EQUAL .)
-    LPAREN          reduce using rule 58 (relational_operator -> EQUAL .)
-    NOT             reduce using rule 58 (relational_operator -> EQUAL .)
-    ID              reduce using rule 58 (relational_operator -> EQUAL .)
+    PLUS            reduce using rule 60 (relational_operator -> EQUAL .)
+    MINUS           reduce using rule 60 (relational_operator -> EQUAL .)
+    NUMBER          reduce using rule 60 (relational_operator -> EQUAL .)
+    LPAREN          reduce using rule 60 (relational_operator -> EQUAL .)
+    NOT             reduce using rule 60 (relational_operator -> EQUAL .)
+    ID              reduce using rule 60 (relational_operator -> EQUAL .)
 
 
 state 66
 
-    (61) relational_operator -> GREATER .
+    (63) relational_operator -> GREATER .
 
-    PLUS            reduce using rule 61 (relational_operator -> GREATER .)
-    MINUS           reduce using rule 61 (relational_operator -> GREATER .)
-    NUMBER          reduce using rule 61 (relational_operator -> GREATER .)
-    LPAREN          reduce using rule 61 (relational_operator -> GREATER .)
-    NOT             reduce using rule 61 (relational_operator -> GREATER .)
-    ID              reduce using rule 61 (relational_operator -> GREATER .)
+    PLUS            reduce using rule 63 (relational_operator -> GREATER .)
+    MINUS           reduce using rule 63 (relational_operator -> GREATER .)
+    NUMBER          reduce using rule 63 (relational_operator -> GREATER .)
+    LPAREN          reduce using rule 63 (relational_operator -> GREATER .)
+    NOT             reduce using rule 63 (relational_operator -> GREATER .)
+    ID              reduce using rule 63 (relational_operator -> GREATER .)
 
 
 state 67
 
-    (73) indexed_variable -> array_variable LBRACKET . expression RBRACKET
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (48) simple_expression -> . sign term simple_expression2
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (75) indexed_variable -> array_variable LBRACKET . expression RBRACKET
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (50) simple_expression -> . sign term simple_expression2
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
-    ID              reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
+    ID              reduce using rule 79 (empty -> .)
 
     sign                           shift and go to state 26
     simple_expression              shift and go to state 28
     expression                     shift and go to state 100
-    empty                          shift and go to state 41
+    empty                          shift and go to state 42
 
 state 68
 
-    (22) statement3 -> SEMICOLON . statement
-    (20) statement -> . simple_statement
-    (21) statement -> . structured_statement
-    (24) simple_statement -> . assignment_statement
-    (25) simple_statement -> . procedure_statement
-    (26) simple_statement -> . read_statement
-    (27) simple_statement -> . write_statement
-    (40) structured_statement -> . compound_statement
-    (41) structured_statement -> . if_statement
-    (42) structured_statement -> . while_statement
-    (28) assignment_statement -> . variable
-    (29) assignment_statement -> . expression
-    (30) procedure_statement -> . procedure_identifier
-    (32) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
-    (36) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
-    (19) compound_statement -> . BEGIN statement statement3 END DOT
-    (43) if_statement -> . IF LPAREN expression RPAREN THEN statement
-    (44) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
-    (45) while_statement -> . WHILE expression DO statement
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (31) procedure_identifier -> . ID
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (48) simple_expression -> . sign term simple_expression2
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (19) compound_statement -> BEGIN statement END . DOT
+
+    DOT             shift and go to state 101
+
+
+state 69
+
+    (21) statement -> statement SEMICOLON . simple_statement
+    (26) simple_statement -> . assignment_statement
+    (27) simple_statement -> . procedure_statement
+    (28) simple_statement -> . read_statement
+    (29) simple_statement -> . write_statement
+    (30) assignment_statement -> . variable
+    (31) assignment_statement -> . expression
+    (32) procedure_statement -> . procedure_identifier
+    (34) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
+    (38) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (33) procedure_identifier -> . ID
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (50) simple_expression -> . sign term simple_expression2
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
   ! shift/reduce conflict for ID resolved as shift
     READ            shift and go to state 24
     WRITE           shift and go to state 43
-    BEGIN           shift and go to state 15
-    IF              shift and go to state 46
-    WHILE           shift and go to state 27
     ID              shift and go to state 45
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
 
-  ! ID              [ reduce using rule 77 (empty -> .) ]
+  ! ID              [ reduce using rule 79 (empty -> .) ]
 
     indexed_variable               shift and go to state 23
-    simple_statement               shift and go to state 25
+    simple_statement               shift and go to state 102
     sign                           shift and go to state 26
     simple_expression              shift and go to state 28
     array_variable                 shift and go to state 29
-    compound_statement             shift and go to state 31
     assignment_statement           shift and go to state 32
     procedure_statement            shift and go to state 33
-    structured_statement           shift and go to state 34
     write_statement                shift and go to state 35
     entire_variable                shift and go to state 36
-    while_statement                shift and go to state 37
-    statement                      shift and go to state 101
     read_statement                 shift and go to state 39
-    if_statement                   shift and go to state 40
-    empty                          shift and go to state 41
-    variable                       shift and go to state 44
+    empty                          shift and go to state 42
     variable_identifier            shift and go to state 47
+    variable                       shift and go to state 44
     procedure_identifier           shift and go to state 48
     expression                     shift and go to state 49
 
-state 69
-
-    (23) statement3 -> empty .
-
-    END             reduce using rule 23 (statement3 -> empty .)
-
-
 state 70
 
-    (19) compound_statement -> BEGIN statement statement3 . END DOT
+    (22) statement -> statement structured_statement .
 
-    END             shift and go to state 102
+    SEMICOLON       reduce using rule 22 (statement -> statement structured_statement .)
+    BEGIN           reduce using rule 22 (statement -> statement structured_statement .)
+    IF              reduce using rule 22 (statement -> statement structured_statement .)
+    WHILE           reduce using rule 22 (statement -> statement structured_statement .)
+    END             reduce using rule 22 (statement -> statement structured_statement .)
+    ELSE            reduce using rule 22 (statement -> statement structured_statement .)
 
 
 state 71
 
-    (36) write_statement -> WRITE LPAREN . output_value COMMA output_value2 RPAREN
-    (37) output_value -> . expression
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (48) simple_expression -> . sign term simple_expression2
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (38) write_statement -> WRITE LPAREN . output_value COMMA output_value2 RPAREN
+    (39) output_value -> . expression
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (50) simple_expression -> . sign term simple_expression2
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
-    ID              reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
+    ID              reduce using rule 79 (empty -> .)
 
     sign                           shift and go to state 26
     output_value                   shift and go to state 103
     simple_expression              shift and go to state 28
     expression                     shift and go to state 104
-    empty                          shift and go to state 41
+    empty                          shift and go to state 42
 
 state 72
 
-    (43) if_statement -> IF LPAREN . expression RPAREN THEN statement
-    (44) if_statement -> IF LPAREN . expression RPAREN THEN statement ELSE statement
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (48) simple_expression -> . sign term simple_expression2
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (45) if_statement -> IF LPAREN . expression RPAREN THEN statement
+    (46) if_statement -> IF LPAREN . expression RPAREN THEN statement ELSE statement
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (50) simple_expression -> . sign term simple_expression2
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
-    ID              reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
+    ID              reduce using rule 79 (empty -> .)
 
     sign                           shift and go to state 26
     simple_expression              shift and go to state 28
     expression                     shift and go to state 105
-    empty                          shift and go to state 41
+    empty                          shift and go to state 42
 
 state 73
 
@@ -1455,66 +1530,69 @@ state 81
 
 state 82
 
-    (33) input_variable -> variable .
+    (35) input_variable -> variable .
 
-    COMMA           reduce using rule 33 (input_variable -> variable .)
-    RPAREN          reduce using rule 33 (input_variable -> variable .)
+    COMMA           reduce using rule 35 (input_variable -> variable .)
+    RPAREN          reduce using rule 35 (input_variable -> variable .)
 
 
 state 83
 
-    (32) read_statement -> READ LPAREN input_variable . input_variable2 RPAREN SEMICOLON
-    (34) input_variable2 -> . empty
-    (35) input_variable2 -> . COMMA variable
-    (77) empty -> .
+    (34) read_statement -> READ LPAREN input_variable . input_variable2 RPAREN SEMICOLON
+    (36) input_variable2 -> . empty
+    (37) input_variable2 -> . COMMA variable
+    (79) empty -> .
 
     COMMA           shift and go to state 107
-    RPAREN          reduce using rule 77 (empty -> .)
+    RPAREN          reduce using rule 79 (empty -> .)
 
     input_variable2                shift and go to state 108
     empty                          shift and go to state 109
 
 state 84
 
-    (48) simple_expression -> sign term simple_expression2 .
+    (50) simple_expression -> sign term simple_expression2 .
 
-    EQUAL           reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    DISTINT         reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    LESS            reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    GREATER         reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    RPAREN          reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    SEMICOLON       reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    END             reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    ELSE            reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    COMMA           reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    DO              reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
-    RBRACKET        reduce using rule 48 (simple_expression -> sign term simple_expression2 .)
+    EQUAL           reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    DISTINT         reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    LESS            reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    GREATER         reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    COMMA           reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    END             reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    SEMICOLON       reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    BEGIN           reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    IF              reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    WHILE           reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    ELSE            reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    RPAREN          reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    DO              reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
+    RBRACKET        reduce using rule 50 (simple_expression -> sign term simple_expression2 .)
 
 
 state 85
 
-    (65) adding_operator -> PLUS .
+    (67) adding_operator -> PLUS .
 
-    NUMBER          reduce using rule 65 (adding_operator -> PLUS .)
-    LPAREN          reduce using rule 65 (adding_operator -> PLUS .)
-    NOT             reduce using rule 65 (adding_operator -> PLUS .)
-    ID              reduce using rule 65 (adding_operator -> PLUS .)
+    NUMBER          reduce using rule 67 (adding_operator -> PLUS .)
+    LPAREN          reduce using rule 67 (adding_operator -> PLUS .)
+    NOT             reduce using rule 67 (adding_operator -> PLUS .)
+    ID              reduce using rule 67 (adding_operator -> PLUS .)
 
 
 state 86
 
-    (49) simple_expression2 -> adding_operator . term
-    (51) term -> . factor term2
-    (54) factor -> . variable
-    (55) factor -> . NUMBER
-    (56) factor -> . LPAREN expression RPAREN
-    (57) factor -> . NOT factor
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
+    (51) simple_expression2 -> adding_operator . term
+    (53) term -> . factor term2
+    (56) factor -> . variable
+    (57) factor -> . NUMBER
+    (58) factor -> . LPAREN expression RPAREN
+    (59) factor -> . NOT factor
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
 
     NUMBER          shift and go to state 55
     LPAREN          shift and go to state 57
@@ -1531,134 +1609,143 @@ state 86
 
 state 87
 
-    (66) adding_operator -> MINUS .
+    (68) adding_operator -> MINUS .
 
-    NUMBER          reduce using rule 66 (adding_operator -> MINUS .)
-    LPAREN          reduce using rule 66 (adding_operator -> MINUS .)
-    NOT             reduce using rule 66 (adding_operator -> MINUS .)
-    ID              reduce using rule 66 (adding_operator -> MINUS .)
+    NUMBER          reduce using rule 68 (adding_operator -> MINUS .)
+    LPAREN          reduce using rule 68 (adding_operator -> MINUS .)
+    NOT             reduce using rule 68 (adding_operator -> MINUS .)
+    ID              reduce using rule 68 (adding_operator -> MINUS .)
 
 
 state 88
 
-    (50) simple_expression2 -> empty .
+    (52) simple_expression2 -> empty .
 
-    EQUAL           reduce using rule 50 (simple_expression2 -> empty .)
-    DISTINT         reduce using rule 50 (simple_expression2 -> empty .)
-    LESS            reduce using rule 50 (simple_expression2 -> empty .)
-    GREATER         reduce using rule 50 (simple_expression2 -> empty .)
-    SEMICOLON       reduce using rule 50 (simple_expression2 -> empty .)
-    END             reduce using rule 50 (simple_expression2 -> empty .)
-    DO              reduce using rule 50 (simple_expression2 -> empty .)
-    RPAREN          reduce using rule 50 (simple_expression2 -> empty .)
-    RBRACKET        reduce using rule 50 (simple_expression2 -> empty .)
-    COMMA           reduce using rule 50 (simple_expression2 -> empty .)
-    ELSE            reduce using rule 50 (simple_expression2 -> empty .)
+    EQUAL           reduce using rule 52 (simple_expression2 -> empty .)
+    DISTINT         reduce using rule 52 (simple_expression2 -> empty .)
+    LESS            reduce using rule 52 (simple_expression2 -> empty .)
+    GREATER         reduce using rule 52 (simple_expression2 -> empty .)
+    END             reduce using rule 52 (simple_expression2 -> empty .)
+    SEMICOLON       reduce using rule 52 (simple_expression2 -> empty .)
+    BEGIN           reduce using rule 52 (simple_expression2 -> empty .)
+    IF              reduce using rule 52 (simple_expression2 -> empty .)
+    WHILE           reduce using rule 52 (simple_expression2 -> empty .)
+    DO              reduce using rule 52 (simple_expression2 -> empty .)
+    RPAREN          reduce using rule 52 (simple_expression2 -> empty .)
+    RBRACKET        reduce using rule 52 (simple_expression2 -> empty .)
+    ELSE            reduce using rule 52 (simple_expression2 -> empty .)
+    COMMA           reduce using rule 52 (simple_expression2 -> empty .)
 
 
 state 89
 
-    (67) adding_operator -> OR .
+    (69) adding_operator -> OR .
 
-    NUMBER          reduce using rule 67 (adding_operator -> OR .)
-    LPAREN          reduce using rule 67 (adding_operator -> OR .)
-    NOT             reduce using rule 67 (adding_operator -> OR .)
-    ID              reduce using rule 67 (adding_operator -> OR .)
+    NUMBER          reduce using rule 69 (adding_operator -> OR .)
+    LPAREN          reduce using rule 69 (adding_operator -> OR .)
+    NOT             reduce using rule 69 (adding_operator -> OR .)
+    ID              reduce using rule 69 (adding_operator -> OR .)
 
 
 state 90
 
-    (57) factor -> NOT factor .
+    (59) factor -> NOT factor .
 
-    TIMES           reduce using rule 57 (factor -> NOT factor .)
-    DIV             reduce using rule 57 (factor -> NOT factor .)
-    AND             reduce using rule 57 (factor -> NOT factor .)
-    EQUAL           reduce using rule 57 (factor -> NOT factor .)
-    DISTINT         reduce using rule 57 (factor -> NOT factor .)
-    LESS            reduce using rule 57 (factor -> NOT factor .)
-    GREATER         reduce using rule 57 (factor -> NOT factor .)
-    SEMICOLON       reduce using rule 57 (factor -> NOT factor .)
-    END             reduce using rule 57 (factor -> NOT factor .)
-    DO              reduce using rule 57 (factor -> NOT factor .)
-    RPAREN          reduce using rule 57 (factor -> NOT factor .)
-    RBRACKET        reduce using rule 57 (factor -> NOT factor .)
-    COMMA           reduce using rule 57 (factor -> NOT factor .)
-    ELSE            reduce using rule 57 (factor -> NOT factor .)
-    PLUS            reduce using rule 57 (factor -> NOT factor .)
-    MINUS           reduce using rule 57 (factor -> NOT factor .)
-    OR              reduce using rule 57 (factor -> NOT factor .)
+    TIMES           reduce using rule 59 (factor -> NOT factor .)
+    DIV             reduce using rule 59 (factor -> NOT factor .)
+    AND             reduce using rule 59 (factor -> NOT factor .)
+    PLUS            reduce using rule 59 (factor -> NOT factor .)
+    MINUS           reduce using rule 59 (factor -> NOT factor .)
+    OR              reduce using rule 59 (factor -> NOT factor .)
+    EQUAL           reduce using rule 59 (factor -> NOT factor .)
+    DISTINT         reduce using rule 59 (factor -> NOT factor .)
+    LESS            reduce using rule 59 (factor -> NOT factor .)
+    GREATER         reduce using rule 59 (factor -> NOT factor .)
+    END             reduce using rule 59 (factor -> NOT factor .)
+    SEMICOLON       reduce using rule 59 (factor -> NOT factor .)
+    BEGIN           reduce using rule 59 (factor -> NOT factor .)
+    IF              reduce using rule 59 (factor -> NOT factor .)
+    WHILE           reduce using rule 59 (factor -> NOT factor .)
+    DO              reduce using rule 59 (factor -> NOT factor .)
+    RPAREN          reduce using rule 59 (factor -> NOT factor .)
+    RBRACKET        reduce using rule 59 (factor -> NOT factor .)
+    ELSE            reduce using rule 59 (factor -> NOT factor .)
+    COMMA           reduce using rule 59 (factor -> NOT factor .)
 
 
 state 91
 
-    (56) factor -> LPAREN expression . RPAREN
+    (58) factor -> LPAREN expression . RPAREN
 
     RPAREN          shift and go to state 111
 
 
 state 92
 
-    (70) multiplying_operator -> AND .
+    (72) multiplying_operator -> AND .
 
-    NUMBER          reduce using rule 70 (multiplying_operator -> AND .)
-    LPAREN          reduce using rule 70 (multiplying_operator -> AND .)
-    NOT             reduce using rule 70 (multiplying_operator -> AND .)
-    ID              reduce using rule 70 (multiplying_operator -> AND .)
+    NUMBER          reduce using rule 72 (multiplying_operator -> AND .)
+    LPAREN          reduce using rule 72 (multiplying_operator -> AND .)
+    NOT             reduce using rule 72 (multiplying_operator -> AND .)
+    ID              reduce using rule 72 (multiplying_operator -> AND .)
 
 
 state 93
 
-    (51) term -> factor term2 .
+    (53) term -> factor term2 .
 
-    PLUS            reduce using rule 51 (term -> factor term2 .)
-    MINUS           reduce using rule 51 (term -> factor term2 .)
-    OR              reduce using rule 51 (term -> factor term2 .)
-    EQUAL           reduce using rule 51 (term -> factor term2 .)
-    DISTINT         reduce using rule 51 (term -> factor term2 .)
-    LESS            reduce using rule 51 (term -> factor term2 .)
-    GREATER         reduce using rule 51 (term -> factor term2 .)
-    SEMICOLON       reduce using rule 51 (term -> factor term2 .)
-    END             reduce using rule 51 (term -> factor term2 .)
-    DO              reduce using rule 51 (term -> factor term2 .)
-    RPAREN          reduce using rule 51 (term -> factor term2 .)
-    RBRACKET        reduce using rule 51 (term -> factor term2 .)
-    COMMA           reduce using rule 51 (term -> factor term2 .)
-    ELSE            reduce using rule 51 (term -> factor term2 .)
+    PLUS            reduce using rule 53 (term -> factor term2 .)
+    MINUS           reduce using rule 53 (term -> factor term2 .)
+    OR              reduce using rule 53 (term -> factor term2 .)
+    EQUAL           reduce using rule 53 (term -> factor term2 .)
+    DISTINT         reduce using rule 53 (term -> factor term2 .)
+    LESS            reduce using rule 53 (term -> factor term2 .)
+    GREATER         reduce using rule 53 (term -> factor term2 .)
+    END             reduce using rule 53 (term -> factor term2 .)
+    SEMICOLON       reduce using rule 53 (term -> factor term2 .)
+    BEGIN           reduce using rule 53 (term -> factor term2 .)
+    IF              reduce using rule 53 (term -> factor term2 .)
+    WHILE           reduce using rule 53 (term -> factor term2 .)
+    DO              reduce using rule 53 (term -> factor term2 .)
+    RPAREN          reduce using rule 53 (term -> factor term2 .)
+    RBRACKET        reduce using rule 53 (term -> factor term2 .)
+    ELSE            reduce using rule 53 (term -> factor term2 .)
+    COMMA           reduce using rule 53 (term -> factor term2 .)
 
 
 state 94
 
-    (68) multiplying_operator -> TIMES .
+    (70) multiplying_operator -> TIMES .
 
-    NUMBER          reduce using rule 68 (multiplying_operator -> TIMES .)
-    LPAREN          reduce using rule 68 (multiplying_operator -> TIMES .)
-    NOT             reduce using rule 68 (multiplying_operator -> TIMES .)
-    ID              reduce using rule 68 (multiplying_operator -> TIMES .)
+    NUMBER          reduce using rule 70 (multiplying_operator -> TIMES .)
+    LPAREN          reduce using rule 70 (multiplying_operator -> TIMES .)
+    NOT             reduce using rule 70 (multiplying_operator -> TIMES .)
+    ID              reduce using rule 70 (multiplying_operator -> TIMES .)
 
 
 state 95
 
-    (69) multiplying_operator -> DIV .
+    (71) multiplying_operator -> DIV .
 
-    NUMBER          reduce using rule 69 (multiplying_operator -> DIV .)
-    LPAREN          reduce using rule 69 (multiplying_operator -> DIV .)
-    NOT             reduce using rule 69 (multiplying_operator -> DIV .)
-    ID              reduce using rule 69 (multiplying_operator -> DIV .)
+    NUMBER          reduce using rule 71 (multiplying_operator -> DIV .)
+    LPAREN          reduce using rule 71 (multiplying_operator -> DIV .)
+    NOT             reduce using rule 71 (multiplying_operator -> DIV .)
+    ID              reduce using rule 71 (multiplying_operator -> DIV .)
 
 
 state 96
 
-    (52) term2 -> multiplying_operator . factor
-    (54) factor -> . variable
-    (55) factor -> . NUMBER
-    (56) factor -> . LPAREN expression RPAREN
-    (57) factor -> . NOT factor
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
+    (54) term2 -> multiplying_operator . factor
+    (56) factor -> . variable
+    (57) factor -> . NUMBER
+    (58) factor -> . LPAREN expression RPAREN
+    (59) factor -> . NOT factor
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
 
     NUMBER          shift and go to state 55
     LPAREN          shift and go to state 57
@@ -1674,59 +1761,64 @@ state 96
 
 state 97
 
-    (53) term2 -> empty .
+    (55) term2 -> empty .
 
-    PLUS            reduce using rule 53 (term2 -> empty .)
-    MINUS           reduce using rule 53 (term2 -> empty .)
-    OR              reduce using rule 53 (term2 -> empty .)
-    EQUAL           reduce using rule 53 (term2 -> empty .)
-    DISTINT         reduce using rule 53 (term2 -> empty .)
-    LESS            reduce using rule 53 (term2 -> empty .)
-    GREATER         reduce using rule 53 (term2 -> empty .)
-    SEMICOLON       reduce using rule 53 (term2 -> empty .)
-    END             reduce using rule 53 (term2 -> empty .)
-    DO              reduce using rule 53 (term2 -> empty .)
-    RPAREN          reduce using rule 53 (term2 -> empty .)
-    RBRACKET        reduce using rule 53 (term2 -> empty .)
-    COMMA           reduce using rule 53 (term2 -> empty .)
-    ELSE            reduce using rule 53 (term2 -> empty .)
+    PLUS            reduce using rule 55 (term2 -> empty .)
+    MINUS           reduce using rule 55 (term2 -> empty .)
+    OR              reduce using rule 55 (term2 -> empty .)
+    EQUAL           reduce using rule 55 (term2 -> empty .)
+    DISTINT         reduce using rule 55 (term2 -> empty .)
+    LESS            reduce using rule 55 (term2 -> empty .)
+    GREATER         reduce using rule 55 (term2 -> empty .)
+    END             reduce using rule 55 (term2 -> empty .)
+    SEMICOLON       reduce using rule 55 (term2 -> empty .)
+    BEGIN           reduce using rule 55 (term2 -> empty .)
+    IF              reduce using rule 55 (term2 -> empty .)
+    WHILE           reduce using rule 55 (term2 -> empty .)
+    DO              reduce using rule 55 (term2 -> empty .)
+    RPAREN          reduce using rule 55 (term2 -> empty .)
+    RBRACKET        reduce using rule 55 (term2 -> empty .)
+    ELSE            reduce using rule 55 (term2 -> empty .)
+    COMMA           reduce using rule 55 (term2 -> empty .)
 
 
 state 98
 
-    (45) while_statement -> WHILE expression DO . statement
+    (47) while_statement -> WHILE expression DO . statement
     (20) statement -> . simple_statement
-    (21) statement -> . structured_statement
-    (24) simple_statement -> . assignment_statement
-    (25) simple_statement -> . procedure_statement
-    (26) simple_statement -> . read_statement
-    (27) simple_statement -> . write_statement
-    (40) structured_statement -> . compound_statement
-    (41) structured_statement -> . if_statement
-    (42) structured_statement -> . while_statement
-    (28) assignment_statement -> . variable
-    (29) assignment_statement -> . expression
-    (30) procedure_statement -> . procedure_identifier
-    (32) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
-    (36) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
-    (19) compound_statement -> . BEGIN statement statement3 END DOT
-    (43) if_statement -> . IF LPAREN expression RPAREN THEN statement
-    (44) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
-    (45) while_statement -> . WHILE expression DO statement
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (31) procedure_identifier -> . ID
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (48) simple_expression -> . sign term simple_expression2
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (21) statement -> . statement SEMICOLON simple_statement
+    (22) statement -> . statement structured_statement
+    (23) statement -> . structured_statement
+    (26) simple_statement -> . assignment_statement
+    (27) simple_statement -> . procedure_statement
+    (28) simple_statement -> . read_statement
+    (29) simple_statement -> . write_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (30) assignment_statement -> . variable
+    (31) assignment_statement -> . expression
+    (32) procedure_statement -> . procedure_identifier
+    (34) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
+    (38) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (33) procedure_identifier -> . ID
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (50) simple_expression -> . sign term simple_expression2
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
   ! shift/reduce conflict for ID resolved as shift
     READ            shift and go to state 24
@@ -1735,13 +1827,13 @@ state 98
     IF              shift and go to state 46
     WHILE           shift and go to state 27
     ID              shift and go to state 45
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
 
-  ! ID              [ reduce using rule 77 (empty -> .) ]
+  ! ID              [ reduce using rule 79 (empty -> .) ]
 
     indexed_variable               shift and go to state 23
     simple_statement               shift and go to state 25
@@ -1757,67 +1849,81 @@ state 98
     while_statement                shift and go to state 37
     statement                      shift and go to state 113
     read_statement                 shift and go to state 39
-    if_statement                   shift and go to state 40
-    empty                          shift and go to state 41
-    variable                       shift and go to state 44
+    if_statement                   shift and go to state 41
+    empty                          shift and go to state 42
     variable_identifier            shift and go to state 47
+    variable                       shift and go to state 44
     procedure_identifier           shift and go to state 48
     expression                     shift and go to state 49
 
 state 99
 
-    (47) expression -> simple_expression relational_operator simple_expression .
+    (49) expression -> simple_expression relational_operator simple_expression .
 
-    COMMA           reduce using rule 47 (expression -> simple_expression relational_operator simple_expression .)
-    END             reduce using rule 47 (expression -> simple_expression relational_operator simple_expression .)
-    RPAREN          reduce using rule 47 (expression -> simple_expression relational_operator simple_expression .)
-    RBRACKET        reduce using rule 47 (expression -> simple_expression relational_operator simple_expression .)
-    DO              reduce using rule 47 (expression -> simple_expression relational_operator simple_expression .)
-    SEMICOLON       reduce using rule 47 (expression -> simple_expression relational_operator simple_expression .)
-    ELSE            reduce using rule 47 (expression -> simple_expression relational_operator simple_expression .)
+    COMMA           reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    RPAREN          reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    END             reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    SEMICOLON       reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    BEGIN           reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    IF              reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    WHILE           reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    ELSE            reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    RBRACKET        reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
+    DO              reduce using rule 49 (expression -> simple_expression relational_operator simple_expression .)
 
 
 state 100
 
-    (73) indexed_variable -> array_variable LBRACKET expression . RBRACKET
+    (75) indexed_variable -> array_variable LBRACKET expression . RBRACKET
 
     RBRACKET        shift and go to state 114
 
 
 state 101
 
-    (22) statement3 -> SEMICOLON statement .
+    (19) compound_statement -> BEGIN statement END DOT .
 
-    END             reduce using rule 22 (statement3 -> SEMICOLON statement .)
+    END             reduce using rule 19 (compound_statement -> BEGIN statement END DOT .)
+    SEMICOLON       reduce using rule 19 (compound_statement -> BEGIN statement END DOT .)
+    BEGIN           reduce using rule 19 (compound_statement -> BEGIN statement END DOT .)
+    IF              reduce using rule 19 (compound_statement -> BEGIN statement END DOT .)
+    WHILE           reduce using rule 19 (compound_statement -> BEGIN statement END DOT .)
+    ELSE            reduce using rule 19 (compound_statement -> BEGIN statement END DOT .)
+    $end            reduce using rule 19 (compound_statement -> BEGIN statement END DOT .)
 
 
 state 102
 
-    (19) compound_statement -> BEGIN statement statement3 END . DOT
+    (21) statement -> statement SEMICOLON simple_statement .
 
-    DOT             shift and go to state 115
+    SEMICOLON       reduce using rule 21 (statement -> statement SEMICOLON simple_statement .)
+    BEGIN           reduce using rule 21 (statement -> statement SEMICOLON simple_statement .)
+    IF              reduce using rule 21 (statement -> statement SEMICOLON simple_statement .)
+    WHILE           reduce using rule 21 (statement -> statement SEMICOLON simple_statement .)
+    END             reduce using rule 21 (statement -> statement SEMICOLON simple_statement .)
+    ELSE            reduce using rule 21 (statement -> statement SEMICOLON simple_statement .)
 
 
 state 103
 
-    (36) write_statement -> WRITE LPAREN output_value . COMMA output_value2 RPAREN
+    (38) write_statement -> WRITE LPAREN output_value . COMMA output_value2 RPAREN
 
-    COMMA           shift and go to state 116
+    COMMA           shift and go to state 115
 
 
 state 104
 
-    (37) output_value -> expression .
+    (39) output_value -> expression .
 
-    COMMA           reduce using rule 37 (output_value -> expression .)
+    COMMA           reduce using rule 39 (output_value -> expression .)
 
 
 state 105
 
-    (43) if_statement -> IF LPAREN expression . RPAREN THEN statement
-    (44) if_statement -> IF LPAREN expression . RPAREN THEN statement ELSE statement
+    (45) if_statement -> IF LPAREN expression . RPAREN THEN statement
+    (46) if_statement -> IF LPAREN expression . RPAREN THEN statement ELSE statement
 
-    RPAREN          shift and go to state 117
+    RPAREN          shift and go to state 116
 
 
 state 106
@@ -1825,270 +1931,298 @@ state 106
     (10) array_type -> ARRAY LBRACKET . index_range RBRACKET OF simple_type
     (11) index_range -> . NUMBER DOT DOT NUMBER
 
-    NUMBER          shift and go to state 119
+    NUMBER          shift and go to state 118
 
-    index_range                    shift and go to state 118
+    index_range                    shift and go to state 117
 
 state 107
 
-    (35) input_variable2 -> COMMA . variable
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
+    (37) input_variable2 -> COMMA . variable
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
 
     ID              shift and go to state 60
 
     indexed_variable               shift and go to state 23
     variable_identifier            shift and go to state 47
     entire_variable                shift and go to state 36
-    variable                       shift and go to state 120
+    variable                       shift and go to state 119
     array_variable                 shift and go to state 29
 
 state 108
 
-    (32) read_statement -> READ LPAREN input_variable input_variable2 . RPAREN SEMICOLON
+    (34) read_statement -> READ LPAREN input_variable input_variable2 . RPAREN SEMICOLON
 
-    RPAREN          shift and go to state 121
+    RPAREN          shift and go to state 120
 
 
 state 109
 
-    (34) input_variable2 -> empty .
+    (36) input_variable2 -> empty .
 
-    RPAREN          reduce using rule 34 (input_variable2 -> empty .)
+    RPAREN          reduce using rule 36 (input_variable2 -> empty .)
 
 
 state 110
 
-    (49) simple_expression2 -> adding_operator term .
+    (51) simple_expression2 -> adding_operator term .
 
-    EQUAL           reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    DISTINT         reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    LESS            reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    GREATER         reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    SEMICOLON       reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    END             reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    DO              reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    RPAREN          reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    RBRACKET        reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    COMMA           reduce using rule 49 (simple_expression2 -> adding_operator term .)
-    ELSE            reduce using rule 49 (simple_expression2 -> adding_operator term .)
+    EQUAL           reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    DISTINT         reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    LESS            reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    GREATER         reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    END             reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    SEMICOLON       reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    BEGIN           reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    IF              reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    WHILE           reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    DO              reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    RPAREN          reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    RBRACKET        reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    ELSE            reduce using rule 51 (simple_expression2 -> adding_operator term .)
+    COMMA           reduce using rule 51 (simple_expression2 -> adding_operator term .)
 
 
 state 111
 
-    (56) factor -> LPAREN expression RPAREN .
+    (58) factor -> LPAREN expression RPAREN .
 
-    TIMES           reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    DIV             reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    AND             reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    EQUAL           reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    DISTINT         reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    LESS            reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    GREATER         reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    SEMICOLON       reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    END             reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    DO              reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    RPAREN          reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    RBRACKET        reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    COMMA           reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    ELSE            reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    PLUS            reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    MINUS           reduce using rule 56 (factor -> LPAREN expression RPAREN .)
-    OR              reduce using rule 56 (factor -> LPAREN expression RPAREN .)
+    TIMES           reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    DIV             reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    AND             reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    PLUS            reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    MINUS           reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    OR              reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    EQUAL           reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    DISTINT         reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    LESS            reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    GREATER         reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    END             reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    SEMICOLON       reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    BEGIN           reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    IF              reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    WHILE           reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    DO              reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    RPAREN          reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    RBRACKET        reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    ELSE            reduce using rule 58 (factor -> LPAREN expression RPAREN .)
+    COMMA           reduce using rule 58 (factor -> LPAREN expression RPAREN .)
 
 
 state 112
 
-    (52) term2 -> multiplying_operator factor .
+    (54) term2 -> multiplying_operator factor .
 
-    PLUS            reduce using rule 52 (term2 -> multiplying_operator factor .)
-    MINUS           reduce using rule 52 (term2 -> multiplying_operator factor .)
-    OR              reduce using rule 52 (term2 -> multiplying_operator factor .)
-    EQUAL           reduce using rule 52 (term2 -> multiplying_operator factor .)
-    DISTINT         reduce using rule 52 (term2 -> multiplying_operator factor .)
-    LESS            reduce using rule 52 (term2 -> multiplying_operator factor .)
-    GREATER         reduce using rule 52 (term2 -> multiplying_operator factor .)
-    SEMICOLON       reduce using rule 52 (term2 -> multiplying_operator factor .)
-    END             reduce using rule 52 (term2 -> multiplying_operator factor .)
-    DO              reduce using rule 52 (term2 -> multiplying_operator factor .)
-    RPAREN          reduce using rule 52 (term2 -> multiplying_operator factor .)
-    RBRACKET        reduce using rule 52 (term2 -> multiplying_operator factor .)
-    COMMA           reduce using rule 52 (term2 -> multiplying_operator factor .)
-    ELSE            reduce using rule 52 (term2 -> multiplying_operator factor .)
+    PLUS            reduce using rule 54 (term2 -> multiplying_operator factor .)
+    MINUS           reduce using rule 54 (term2 -> multiplying_operator factor .)
+    OR              reduce using rule 54 (term2 -> multiplying_operator factor .)
+    EQUAL           reduce using rule 54 (term2 -> multiplying_operator factor .)
+    DISTINT         reduce using rule 54 (term2 -> multiplying_operator factor .)
+    LESS            reduce using rule 54 (term2 -> multiplying_operator factor .)
+    GREATER         reduce using rule 54 (term2 -> multiplying_operator factor .)
+    END             reduce using rule 54 (term2 -> multiplying_operator factor .)
+    SEMICOLON       reduce using rule 54 (term2 -> multiplying_operator factor .)
+    BEGIN           reduce using rule 54 (term2 -> multiplying_operator factor .)
+    IF              reduce using rule 54 (term2 -> multiplying_operator factor .)
+    WHILE           reduce using rule 54 (term2 -> multiplying_operator factor .)
+    DO              reduce using rule 54 (term2 -> multiplying_operator factor .)
+    RPAREN          reduce using rule 54 (term2 -> multiplying_operator factor .)
+    RBRACKET        reduce using rule 54 (term2 -> multiplying_operator factor .)
+    ELSE            reduce using rule 54 (term2 -> multiplying_operator factor .)
+    COMMA           reduce using rule 54 (term2 -> multiplying_operator factor .)
 
 
 state 113
 
-    (45) while_statement -> WHILE expression DO statement .
+    (47) while_statement -> WHILE expression DO statement .
+    (21) statement -> statement . SEMICOLON simple_statement
+    (22) statement -> statement . structured_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
 
-    SEMICOLON       reduce using rule 45 (while_statement -> WHILE expression DO statement .)
-    END             reduce using rule 45 (while_statement -> WHILE expression DO statement .)
-    ELSE            reduce using rule 45 (while_statement -> WHILE expression DO statement .)
+  ! shift/reduce conflict for SEMICOLON resolved as shift
+  ! shift/reduce conflict for BEGIN resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+    END             reduce using rule 47 (while_statement -> WHILE expression DO statement .)
+    ELSE            reduce using rule 47 (while_statement -> WHILE expression DO statement .)
+    SEMICOLON       shift and go to state 69
+    BEGIN           shift and go to state 15
+    IF              shift and go to state 46
+    WHILE           shift and go to state 27
 
+  ! SEMICOLON       [ reduce using rule 47 (while_statement -> WHILE expression DO statement .) ]
+  ! BEGIN           [ reduce using rule 47 (while_statement -> WHILE expression DO statement .) ]
+  ! IF              [ reduce using rule 47 (while_statement -> WHILE expression DO statement .) ]
+  ! WHILE           [ reduce using rule 47 (while_statement -> WHILE expression DO statement .) ]
+
+    compound_statement             shift and go to state 31
+    structured_statement           shift and go to state 70
+    while_statement                shift and go to state 37
+    if_statement                   shift and go to state 41
 
 state 114
 
-    (73) indexed_variable -> array_variable LBRACKET expression RBRACKET .
+    (75) indexed_variable -> array_variable LBRACKET expression RBRACKET .
 
-    SEMICOLON       reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    END             reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    ELSE            reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    COMMA           reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    RPAREN          reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    TIMES           reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    DIV             reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    AND             reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    PLUS            reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    MINUS           reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    OR              reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    EQUAL           reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    DISTINT         reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    LESS            reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    GREATER         reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    DO              reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
-    RBRACKET        reduce using rule 73 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    COMMA           reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    RPAREN          reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    END             reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    SEMICOLON       reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    BEGIN           reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    IF              reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    WHILE           reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    ELSE            reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    TIMES           reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    DIV             reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    AND             reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    PLUS            reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    MINUS           reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    OR              reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    EQUAL           reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    DISTINT         reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    LESS            reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    GREATER         reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    DO              reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
+    RBRACKET        reduce using rule 75 (indexed_variable -> array_variable LBRACKET expression RBRACKET .)
 
 
 state 115
 
-    (19) compound_statement -> BEGIN statement statement3 END DOT .
+    (38) write_statement -> WRITE LPAREN output_value COMMA . output_value2 RPAREN
+    (40) output_value2 -> . empty
+    (41) output_value2 -> . expression
+    (79) empty -> .
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (50) simple_expression -> . sign term simple_expression2
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
 
-    SEMICOLON       reduce using rule 19 (compound_statement -> BEGIN statement statement3 END DOT .)
-    END             reduce using rule 19 (compound_statement -> BEGIN statement statement3 END DOT .)
-    ELSE            reduce using rule 19 (compound_statement -> BEGIN statement statement3 END DOT .)
-    $end            reduce using rule 19 (compound_statement -> BEGIN statement statement3 END DOT .)
-    BEGIN           reduce using rule 19 (compound_statement -> BEGIN statement statement3 END DOT .)
+    RPAREN          reduce using rule 79 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
+    ID              reduce using rule 79 (empty -> .)
+    PLUS            shift and go to state 40
+    MINUS           shift and go to state 30
 
+    output_value2                  shift and go to state 121
+    sign                           shift and go to state 26
+    simple_expression              shift and go to state 28
+    expression                     shift and go to state 122
+    empty                          shift and go to state 123
 
 state 116
 
-    (36) write_statement -> WRITE LPAREN output_value COMMA . output_value2 RPAREN
-    (38) output_value2 -> . empty
-    (39) output_value2 -> . expression
-    (77) empty -> .
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (48) simple_expression -> . sign term simple_expression2
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
+    (45) if_statement -> IF LPAREN expression RPAREN . THEN statement
+    (46) if_statement -> IF LPAREN expression RPAREN . THEN statement ELSE statement
 
-    RPAREN          reduce using rule 77 (empty -> .)
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
-    ID              reduce using rule 77 (empty -> .)
-    PLUS            shift and go to state 42
-    MINUS           shift and go to state 30
+    THEN            shift and go to state 124
 
-    output_value2                  shift and go to state 122
-    sign                           shift and go to state 26
-    simple_expression              shift and go to state 28
-    expression                     shift and go to state 123
-    empty                          shift and go to state 124
 
 state 117
 
-    (43) if_statement -> IF LPAREN expression RPAREN . THEN statement
-    (44) if_statement -> IF LPAREN expression RPAREN . THEN statement ELSE statement
+    (10) array_type -> ARRAY LBRACKET index_range . RBRACKET OF simple_type
 
-    THEN            shift and go to state 125
+    RBRACKET        shift and go to state 125
 
 
 state 118
 
-    (10) array_type -> ARRAY LBRACKET index_range . RBRACKET OF simple_type
+    (11) index_range -> NUMBER . DOT DOT NUMBER
 
-    RBRACKET        shift and go to state 126
+    DOT             shift and go to state 126
 
 
 state 119
 
-    (11) index_range -> NUMBER . DOT DOT NUMBER
+    (37) input_variable2 -> COMMA variable .
 
-    DOT             shift and go to state 127
+    RPAREN          reduce using rule 37 (input_variable2 -> COMMA variable .)
 
 
 state 120
 
-    (35) input_variable2 -> COMMA variable .
+    (34) read_statement -> READ LPAREN input_variable input_variable2 RPAREN . SEMICOLON
 
-    RPAREN          reduce using rule 35 (input_variable2 -> COMMA variable .)
+    SEMICOLON       shift and go to state 127
 
 
 state 121
 
-    (32) read_statement -> READ LPAREN input_variable input_variable2 RPAREN . SEMICOLON
+    (38) write_statement -> WRITE LPAREN output_value COMMA output_value2 . RPAREN
 
-    SEMICOLON       shift and go to state 128
+    RPAREN          shift and go to state 128
 
 
 state 122
 
-    (36) write_statement -> WRITE LPAREN output_value COMMA output_value2 . RPAREN
+    (41) output_value2 -> expression .
 
-    RPAREN          shift and go to state 129
+    RPAREN          reduce using rule 41 (output_value2 -> expression .)
 
 
 state 123
 
-    (39) output_value2 -> expression .
+    (40) output_value2 -> empty .
+    (66) sign -> empty .
 
-    RPAREN          reduce using rule 39 (output_value2 -> expression .)
+    RPAREN          reduce using rule 40 (output_value2 -> empty .)
+    NUMBER          reduce using rule 66 (sign -> empty .)
+    LPAREN          reduce using rule 66 (sign -> empty .)
+    NOT             reduce using rule 66 (sign -> empty .)
+    ID              reduce using rule 66 (sign -> empty .)
 
 
 state 124
 
-    (38) output_value2 -> empty .
-    (64) sign -> empty .
-
-    RPAREN          reduce using rule 38 (output_value2 -> empty .)
-    NUMBER          reduce using rule 64 (sign -> empty .)
-    LPAREN          reduce using rule 64 (sign -> empty .)
-    NOT             reduce using rule 64 (sign -> empty .)
-    ID              reduce using rule 64 (sign -> empty .)
-
-
-state 125
-
-    (43) if_statement -> IF LPAREN expression RPAREN THEN . statement
-    (44) if_statement -> IF LPAREN expression RPAREN THEN . statement ELSE statement
+    (45) if_statement -> IF LPAREN expression RPAREN THEN . statement
+    (46) if_statement -> IF LPAREN expression RPAREN THEN . statement ELSE statement
     (20) statement -> . simple_statement
-    (21) statement -> . structured_statement
-    (24) simple_statement -> . assignment_statement
-    (25) simple_statement -> . procedure_statement
-    (26) simple_statement -> . read_statement
-    (27) simple_statement -> . write_statement
-    (40) structured_statement -> . compound_statement
-    (41) structured_statement -> . if_statement
-    (42) structured_statement -> . while_statement
-    (28) assignment_statement -> . variable
-    (29) assignment_statement -> . expression
-    (30) procedure_statement -> . procedure_identifier
-    (32) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
-    (36) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
-    (19) compound_statement -> . BEGIN statement statement3 END DOT
-    (43) if_statement -> . IF LPAREN expression RPAREN THEN statement
-    (44) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
-    (45) while_statement -> . WHILE expression DO statement
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (31) procedure_identifier -> . ID
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (48) simple_expression -> . sign term simple_expression2
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (21) statement -> . statement SEMICOLON simple_statement
+    (22) statement -> . statement structured_statement
+    (23) statement -> . structured_statement
+    (26) simple_statement -> . assignment_statement
+    (27) simple_statement -> . procedure_statement
+    (28) simple_statement -> . read_statement
+    (29) simple_statement -> . write_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (30) assignment_statement -> . variable
+    (31) assignment_statement -> . expression
+    (32) procedure_statement -> . procedure_identifier
+    (34) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
+    (38) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (33) procedure_identifier -> . ID
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (50) simple_expression -> . sign term simple_expression2
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
   ! shift/reduce conflict for ID resolved as shift
     READ            shift and go to state 24
@@ -2097,13 +2231,13 @@ state 125
     IF              shift and go to state 46
     WHILE           shift and go to state 27
     ID              shift and go to state 45
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
 
-  ! ID              [ reduce using rule 77 (empty -> .) ]
+  ! ID              [ reduce using rule 79 (empty -> .) ]
 
     indexed_variable               shift and go to state 23
     simple_statement               shift and go to state 25
@@ -2117,61 +2251,91 @@ state 125
     write_statement                shift and go to state 35
     entire_variable                shift and go to state 36
     while_statement                shift and go to state 37
-    statement                      shift and go to state 130
+    statement                      shift and go to state 129
     read_statement                 shift and go to state 39
-    if_statement                   shift and go to state 40
-    empty                          shift and go to state 41
-    variable                       shift and go to state 44
+    if_statement                   shift and go to state 41
+    empty                          shift and go to state 42
     variable_identifier            shift and go to state 47
+    variable                       shift and go to state 44
     procedure_identifier           shift and go to state 48
     expression                     shift and go to state 49
 
-state 126
+state 125
 
     (10) array_type -> ARRAY LBRACKET index_range RBRACKET . OF simple_type
 
-    OF              shift and go to state 131
+    OF              shift and go to state 130
+
+
+state 126
+
+    (11) index_range -> NUMBER DOT . DOT NUMBER
+
+    DOT             shift and go to state 131
 
 
 state 127
 
-    (11) index_range -> NUMBER DOT . DOT NUMBER
+    (34) read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .
 
-    DOT             shift and go to state 132
+    SEMICOLON       reduce using rule 34 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
+    BEGIN           reduce using rule 34 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
+    IF              reduce using rule 34 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
+    WHILE           reduce using rule 34 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
+    END             reduce using rule 34 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
+    ELSE            reduce using rule 34 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
 
 
 state 128
 
-    (32) read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .
+    (38) write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .
 
-    SEMICOLON       reduce using rule 32 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
-    END             reduce using rule 32 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
-    ELSE            reduce using rule 32 (read_statement -> READ LPAREN input_variable input_variable2 RPAREN SEMICOLON .)
+    SEMICOLON       reduce using rule 38 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
+    BEGIN           reduce using rule 38 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
+    IF              reduce using rule 38 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
+    WHILE           reduce using rule 38 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
+    END             reduce using rule 38 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
+    ELSE            reduce using rule 38 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
 
 
 state 129
 
-    (36) write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .
-
-    SEMICOLON       reduce using rule 36 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
-    END             reduce using rule 36 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
-    ELSE            reduce using rule 36 (write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN .)
-
-
-state 130
-
-    (43) if_statement -> IF LPAREN expression RPAREN THEN statement .
-    (44) if_statement -> IF LPAREN expression RPAREN THEN statement . ELSE statement
+    (45) if_statement -> IF LPAREN expression RPAREN THEN statement .
+    (46) if_statement -> IF LPAREN expression RPAREN THEN statement . ELSE statement
+    (21) statement -> statement . SEMICOLON simple_statement
+    (22) statement -> statement . structured_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
 
   ! shift/reduce conflict for ELSE resolved as shift
-    END             reduce using rule 43 (if_statement -> IF LPAREN expression RPAREN THEN statement .)
-    SEMICOLON       reduce using rule 43 (if_statement -> IF LPAREN expression RPAREN THEN statement .)
-    ELSE            shift and go to state 133
+  ! shift/reduce conflict for SEMICOLON resolved as shift
+  ! shift/reduce conflict for BEGIN resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+    END             reduce using rule 45 (if_statement -> IF LPAREN expression RPAREN THEN statement .)
+    ELSE            shift and go to state 132
+    SEMICOLON       shift and go to state 69
+    BEGIN           shift and go to state 15
+    IF              shift and go to state 46
+    WHILE           shift and go to state 27
 
-  ! ELSE            [ reduce using rule 43 (if_statement -> IF LPAREN expression RPAREN THEN statement .) ]
+  ! SEMICOLON       [ reduce using rule 45 (if_statement -> IF LPAREN expression RPAREN THEN statement .) ]
+  ! BEGIN           [ reduce using rule 45 (if_statement -> IF LPAREN expression RPAREN THEN statement .) ]
+  ! IF              [ reduce using rule 45 (if_statement -> IF LPAREN expression RPAREN THEN statement .) ]
+  ! WHILE           [ reduce using rule 45 (if_statement -> IF LPAREN expression RPAREN THEN statement .) ]
+  ! ELSE            [ reduce using rule 45 (if_statement -> IF LPAREN expression RPAREN THEN statement .) ]
 
+    compound_statement             shift and go to state 31
+    structured_statement           shift and go to state 70
+    while_statement                shift and go to state 37
+    if_statement                   shift and go to state 41
 
-state 131
+state 130
 
     (10) array_type -> ARRAY LBRACKET index_range RBRACKET OF . simple_type
     (12) simple_type -> . type_identifier
@@ -2182,50 +2346,52 @@ state 131
     CHAR            shift and go to state 81
 
     type_identifier                shift and go to state 75
-    simple_type                    shift and go to state 134
+    simple_type                    shift and go to state 133
 
-state 132
+state 131
 
     (11) index_range -> NUMBER DOT DOT . NUMBER
 
-    NUMBER          shift and go to state 135
+    NUMBER          shift and go to state 134
 
 
-state 133
+state 132
 
-    (44) if_statement -> IF LPAREN expression RPAREN THEN statement ELSE . statement
+    (46) if_statement -> IF LPAREN expression RPAREN THEN statement ELSE . statement
     (20) statement -> . simple_statement
-    (21) statement -> . structured_statement
-    (24) simple_statement -> . assignment_statement
-    (25) simple_statement -> . procedure_statement
-    (26) simple_statement -> . read_statement
-    (27) simple_statement -> . write_statement
-    (40) structured_statement -> . compound_statement
-    (41) structured_statement -> . if_statement
-    (42) structured_statement -> . while_statement
-    (28) assignment_statement -> . variable
-    (29) assignment_statement -> . expression
-    (30) procedure_statement -> . procedure_identifier
-    (32) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
-    (36) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
-    (19) compound_statement -> . BEGIN statement statement3 END DOT
-    (43) if_statement -> . IF LPAREN expression RPAREN THEN statement
-    (44) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
-    (45) while_statement -> . WHILE expression DO statement
-    (71) variable -> . entire_variable
-    (72) variable -> . indexed_variable
-    (46) expression -> . simple_expression
-    (47) expression -> . simple_expression relational_operator simple_expression
-    (31) procedure_identifier -> . ID
-    (75) entire_variable -> . variable_identifier
-    (73) indexed_variable -> . array_variable LBRACKET expression RBRACKET
-    (48) simple_expression -> . sign term simple_expression2
-    (76) variable_identifier -> . ID
-    (74) array_variable -> . entire_variable
-    (62) sign -> . PLUS
-    (63) sign -> . MINUS
-    (64) sign -> . empty
-    (77) empty -> .
+    (21) statement -> . statement SEMICOLON simple_statement
+    (22) statement -> . statement structured_statement
+    (23) statement -> . structured_statement
+    (26) simple_statement -> . assignment_statement
+    (27) simple_statement -> . procedure_statement
+    (28) simple_statement -> . read_statement
+    (29) simple_statement -> . write_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (30) assignment_statement -> . variable
+    (31) assignment_statement -> . expression
+    (32) procedure_statement -> . procedure_identifier
+    (34) read_statement -> . READ LPAREN input_variable input_variable2 RPAREN SEMICOLON
+    (38) write_statement -> . WRITE LPAREN output_value COMMA output_value2 RPAREN
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
+    (73) variable -> . entire_variable
+    (74) variable -> . indexed_variable
+    (48) expression -> . simple_expression
+    (49) expression -> . simple_expression relational_operator simple_expression
+    (33) procedure_identifier -> . ID
+    (77) entire_variable -> . variable_identifier
+    (75) indexed_variable -> . array_variable LBRACKET expression RBRACKET
+    (50) simple_expression -> . sign term simple_expression2
+    (78) variable_identifier -> . ID
+    (76) array_variable -> . entire_variable
+    (64) sign -> . PLUS
+    (65) sign -> . MINUS
+    (66) sign -> . empty
+    (79) empty -> .
 
   ! shift/reduce conflict for ID resolved as shift
     READ            shift and go to state 24
@@ -2234,13 +2400,13 @@ state 133
     IF              shift and go to state 46
     WHILE           shift and go to state 27
     ID              shift and go to state 45
-    PLUS            shift and go to state 42
+    PLUS            shift and go to state 40
     MINUS           shift and go to state 30
-    NUMBER          reduce using rule 77 (empty -> .)
-    LPAREN          reduce using rule 77 (empty -> .)
-    NOT             reduce using rule 77 (empty -> .)
+    NUMBER          reduce using rule 79 (empty -> .)
+    LPAREN          reduce using rule 79 (empty -> .)
+    NOT             reduce using rule 79 (empty -> .)
 
-  ! ID              [ reduce using rule 77 (empty -> .) ]
+  ! ID              [ reduce using rule 79 (empty -> .) ]
 
     indexed_variable               shift and go to state 23
     simple_statement               shift and go to state 25
@@ -2254,45 +2420,82 @@ state 133
     write_statement                shift and go to state 35
     entire_variable                shift and go to state 36
     while_statement                shift and go to state 37
-    statement                      shift and go to state 136
+    statement                      shift and go to state 135
     read_statement                 shift and go to state 39
-    if_statement                   shift and go to state 40
-    empty                          shift and go to state 41
-    variable                       shift and go to state 44
+    if_statement                   shift and go to state 41
+    empty                          shift and go to state 42
     variable_identifier            shift and go to state 47
+    variable                       shift and go to state 44
     procedure_identifier           shift and go to state 48
     expression                     shift and go to state 49
 
-state 134
+state 133
 
     (10) array_type -> ARRAY LBRACKET index_range RBRACKET OF simple_type .
 
     SEMICOLON       reduce using rule 10 (array_type -> ARRAY LBRACKET index_range RBRACKET OF simple_type .)
 
 
-state 135
+state 134
 
     (11) index_range -> NUMBER DOT DOT NUMBER .
 
     RBRACKET        reduce using rule 11 (index_range -> NUMBER DOT DOT NUMBER .)
 
 
-state 136
+state 135
 
-    (44) if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .
+    (46) if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .
+    (21) statement -> statement . SEMICOLON simple_statement
+    (22) statement -> statement . structured_statement
+    (42) structured_statement -> . compound_statement
+    (43) structured_statement -> . if_statement
+    (44) structured_statement -> . while_statement
+    (19) compound_statement -> . BEGIN statement END DOT
+    (45) if_statement -> . IF LPAREN expression RPAREN THEN statement
+    (46) if_statement -> . IF LPAREN expression RPAREN THEN statement ELSE statement
+    (47) while_statement -> . WHILE expression DO statement
 
-    END             reduce using rule 44 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .)
-    SEMICOLON       reduce using rule 44 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .)
-    ELSE            reduce using rule 44 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .)
+  ! shift/reduce conflict for SEMICOLON resolved as shift
+  ! shift/reduce conflict for BEGIN resolved as shift
+  ! shift/reduce conflict for IF resolved as shift
+  ! shift/reduce conflict for WHILE resolved as shift
+    END             reduce using rule 46 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .)
+    ELSE            reduce using rule 46 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .)
+    SEMICOLON       shift and go to state 69
+    BEGIN           shift and go to state 15
+    IF              shift and go to state 46
+    WHILE           shift and go to state 27
 
+  ! SEMICOLON       [ reduce using rule 46 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .) ]
+  ! BEGIN           [ reduce using rule 46 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .) ]
+  ! IF              [ reduce using rule 46 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .) ]
+  ! WHILE           [ reduce using rule 46 (if_statement -> IF LPAREN expression RPAREN THEN statement ELSE statement .) ]
+
+    compound_statement             shift and go to state 31
+    structured_statement           shift and go to state 70
+    while_statement                shift and go to state 37
+    if_statement                   shift and go to state 41
 WARNING: 
 WARNING: Conflicts:
 WARNING: 
 WARNING: shift/reduce conflict for ID in state 15 resolved as shift
-WARNING: shift/reduce conflict for ID in state 68 resolved as shift
+WARNING: shift/reduce conflict for ID in state 69 resolved as shift
 WARNING: shift/reduce conflict for ID in state 98 resolved as shift
-WARNING: shift/reduce conflict for ID in state 125 resolved as shift
-WARNING: shift/reduce conflict for ELSE in state 130 resolved as shift
-WARNING: shift/reduce conflict for ID in state 133 resolved as shift
+WARNING: shift/reduce conflict for SEMICOLON in state 113 resolved as shift
+WARNING: shift/reduce conflict for BEGIN in state 113 resolved as shift
+WARNING: shift/reduce conflict for IF in state 113 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 113 resolved as shift
+WARNING: shift/reduce conflict for ID in state 124 resolved as shift
+WARNING: shift/reduce conflict for ELSE in state 129 resolved as shift
+WARNING: shift/reduce conflict for SEMICOLON in state 129 resolved as shift
+WARNING: shift/reduce conflict for BEGIN in state 129 resolved as shift
+WARNING: shift/reduce conflict for IF in state 129 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 129 resolved as shift
+WARNING: shift/reduce conflict for ID in state 132 resolved as shift
+WARNING: shift/reduce conflict for SEMICOLON in state 135 resolved as shift
+WARNING: shift/reduce conflict for BEGIN in state 135 resolved as shift
+WARNING: shift/reduce conflict for IF in state 135 resolved as shift
+WARNING: shift/reduce conflict for WHILE in state 135 resolved as shift
 WARNING: reduce/reduce conflict in state 45 resolved using rule (procedure_identifier -> ID)
 WARNING: rejected rule (variable_identifier -> ID) in state 45

@@ -64,16 +64,22 @@ def p_statement_part (p):
     'compound_statement : empty'
     pass """
 def p_compound_statement (p):
-    'compound_statement : BEGIN statement statement3 END DOT'
+    'compound_statement : BEGIN statement  END DOT'
     pass
 def p_statement (p):
     'statement : simple_statement'
+    pass
+def p_statement4(p):
+    'statement : statement SEMICOLON simple_statement'
+    pass
+def p_statement5(p):
+    'statement : statement structured_statement'
     pass
 def p_statement2 (p):
     'statement : structured_statement'
     pass
 def p_statement3 (p):
-    'statement3 :  SEMICOLON statement'  
+    'statement3 : SEMICOLON statement'  
     pass
 
 """ def p_statement3es (p):
@@ -84,7 +90,7 @@ def p_statement3e (p):
     'statement3 : empty'
     pass
 
-    pass
+    
 # statement 
 def p_simple_statement (p):
     'simple_statement : assignment_statement'
@@ -182,7 +188,7 @@ def p_factor2 (p):
     'factor : NUMBER'''
     pass
 def p_factor3 (p):
-    'factor : LPAREN expression RPAREN '
+    'factor : LPAREN expression RPAREN'
     pass
 def p_factor4 (p):
     'factor : NOT factor'
@@ -234,6 +240,7 @@ def p_variable_identifier (p):
 def p_empty(p):
     'empty :'
     pass
+
 """ def p_error(p):
 	if VERBOSE:
 		if p is not None:
