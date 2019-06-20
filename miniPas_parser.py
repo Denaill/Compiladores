@@ -16,10 +16,11 @@ def p_variable_declaration_part (p):
     | VAR variable_declaration SEMICOLON'''
     pass
 def p_variable_declaration (p):
-    'variable_declaration : ID COLON type'
+    'variable_declaration : ID variable_declaration2 COLON type'
     pass
 def p_variable_declaration1 (p):
-    'variable_declaration2 : ID COMMA variable_declaration2 COLON type '
+    '''variable_declaration2 :  COMMA ID variable_declaration2  
+                             | empty'''
     pass
 def p_type (p):
     'type : simple_type'
@@ -61,7 +62,7 @@ def p_compound_statement (p):
     'compound_statement : empty'
     pass
 def p_compound_statement2 (p):
-    'compound_statement : BEGIN statement SEMICOLON STATEMENT END'
+    'compound_statement : BEGIN statement SEMICOLON statement END'
     pass
 def p_statement (p):
     'statement : simple_statement'
@@ -88,11 +89,13 @@ def p_assignment_statement (p):
     pass
 
 def p_assignment_statement2 (p):
-    'assignment_statement : expresion'
+    'assignment_statement : expression'
     pass
 def p_procedure_statement(p):
     'procedure_statement : procedure_identifier'
     pass
+def p_procedure_identifier (p):
+    'procedure_identifier : ID'
 def p_read_statement (p):
     'read_statement : READ LPAREN input_variable COMMA input_variable2 RPAREN'
     pass
@@ -104,7 +107,7 @@ def p_input_variable2 (p):
                     | variable'''
     pass
 def p_write_statement(p):
-    'write_statement : WRITE LPAREN output_value comma output_variable2 RPAREN'
+    'write_statement : WRITE LPAREN output_value COMMA output_value2 RPAREN'
     pass
 def p_output_value (p):
     'output_value : expression'
@@ -141,28 +144,85 @@ def p_expression (p):
 def p_expression2 (p):
     'expression : simple_expression relational_operator simple_expression'
     pass
-def P_simple_expression (p):
+def p_simple_expression (p):
     'simple_expression : sign term  adding_operator term' # ojo aqui, recordad el e
     pass
 def p_term (p):
     'term : factor multiplying_operator factor' # ojo aqui, recordad el e
     pass
 
+def p_factor (p):
+    'factor : variable'
+    pass
+
+def p_factor2 (p):
+    'factor : ID'''
+    pass
+def p_factor3 (p):
+    'factor : LPAREN expression RPAREN '
+    pass
+def p_factor4 (p):
+    'factor : NOT factor'
+    pass
+
+def p_relational_operator (p):
+    '''relational_operator : EQUAL 
+                           | DISTINT
+                           | LESS
+                           | GREATER'''
+    pass
+def p_sign (p):
+    '''sign : PLUS
+            | MINUS
+            | empty'''
+    pass
+def p_adding_operator(p):
+    '''adding_operator : PLUS
+                       | MINUS
+                       | OR'''
+    pass
+def p_multiplying_operator (p):
+    '''multiplying_operator : TIMES 
+                            | DIV
+                            | AND'''
+
+#Variable 
+def p_variable (p):
+    'variable : entire_variable'
+    pass
+def p_variable2 (p):
+    'variable : indexed_variable'
+    pass
+def p_indexed_variable (p):
+    'indexed_variable : array_variable LBRACKET expression RBRACKET'
+    pass
+def p_array_variable (p):
+    'array_variable : entire_variable'
+    pass
+def p_entire_variable (p):
+    'entire_variable : variable_identifier'
+    pass
+def p_variable_identifier (p):
+    'variable_identifier : ID'
+    pass
+
 
 
 def p_empty(p):
-    'empty : '
+    'empty :'
     pass
-def p_error(p):
+""" def p_error(p):
 	if VERBOSE:
 		if p is not None:
 			print ("ERROR SINTACTICO EN LA LINEA " + str(p.lexer.lineno) + " NO SE ESPERABA EL Token  " + str(p.value))
 		else:
 			print ("ERROR SINTACTICO EN LA LINEA: " + str(cminus_lexer.lexer.lineno))
 	else:
-		raise Exception('syntax', 'error')
+		raise Exception('syntax', 'error') """
 		
-
+def p_error(p):
+    print "syntax error", p
+    print "line -> "+str(p.lineno)
 parser = yacc.yacc()
 
 if __name__ == '__main__':

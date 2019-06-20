@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ABS AMPERSANT AND ARCTAN ARRAY BEGIN BOOLEAN CASE CHAR CHR CLOSECOMMENT CLOSECOMMENT2 COLON COMMA COMMENT CONST COS DISPOSE DISTINT DIV DIVIDE DO DOT DOWNTO ELSE END EOF EOLN EQUAL EXP FALSE FILE FOR FUNCTION GET GOTO GREATER HASHTAG ID IF IN INPUT INTEGER LABEL LBRACKET LESS LN LPAREN MAXINT MINUS MOD NEW NIL NOT NUMBER ODD OF OPENCOMMENT OPENCOMMENT2 OR ORD OUTPUT PACK PACKED PAGE PLUS PRED PROCEDURE PROGRAM PUT RBRACKET READ READLN REAL RECORD REPEAT RESET REWRITE ROUND RPAREN SEMICOLON SET SIMPLE SIN SQR SQRT STRING SUCC TEXT THEN TIMES TO TRUE TRUNC TYPE UNPACK UNTIL VAR WHILE WITH WRITE WRITELNprogram : PROGRAM ID SEMICOLON blockblock : variable_declaration_partvariable_declaration_part : empty\n    | VAR variable_declaration SEMICOLONvariable_declaration : ID COLON INTEGERempty :'
+_lr_signature = 'ABS AMPERSANT AND ARCTAN ARRAY BEGIN BOOLEAN CASE CHAR CHR CLOSECOMMENT CLOSECOMMENT2 COLON COMMA COMMENT CONST COS DISPOSE DISTINT DIV DIVIDE DO DOT DOWNTO ELSE END EOF EOLN EQUAL EXP FALSE FILE FOR FUNCTION GET GOTO GREATER HASHTAG ID IF IN INPUT INTEGER LABEL LBRACKET LESS LN LPAREN MAXINT MINUS MOD NEW NIL NOT NUMBER ODD OF OPENCOMMENT OPENCOMMENT2 OR ORD OUTPUT PACK PACKED PAGE PLUS PRED PROCEDURE PROGRAM PUT RBRACKET READ READLN REAL RECORD REPEAT RESET REWRITE ROUND RPAREN SEMICOLON SET SIMPLE SIN SQR SQRT STRING SUCC TEXT THEN TIMES TO TRUE TRUNC TYPE UNPACK UNTIL VAR WHILE WITH WRITE WRITELNprogram : PROGRAM ID SEMICOLON blockblock : variable_declaration_part procedure_declaration_part statement_partvariable_declaration_part : empty\n    | VAR variable_declaration SEMICOLONvariable_declaration : ID variable_declaration2 COLON typevariable_declaration2 :  COMMA ID variable_declaration2  \n                             | emptytype : simple_typetype : array_typearray_type : ARRAY LBRACKET index_range RBRACKET OF simple_typeindex_range : NUMBER DOT DOT NUMBER simple_type : type_identifiertype_identifier : IDprocedure_declaration_part : emptyprocedure_declaration_part : procedure_declarationprocedure_declaration : PROCEDURE ID SEMICOLON block statement_part : compound_statementcompound_statement : emptycompound_statement : BEGIN statement SEMICOLON statement ENDstatement : simple_statementstatement : structured_statementsimple_statement : assignment_statementsimple_statement : procedure_statementsimple_statement : read_statementsimple_statement : write_statementassignment_statement : variableassignment_statement : expressionprocedure_statement : procedure_identifierprocedure_identifier : IDread_statement : READ LPAREN input_variable COMMA input_variable2 RPARENinput_variable : variableinput_variable2 : empty\n                    | variablewrite_statement : WRITE LPAREN output_value COMMA output_value2 RPARENoutput_value : expressionoutput_value2 : empty\n                     | expressionstructured_statement : compound_statementstructured_statement : if_statementstructured_statement : while_statementif_statement : IF expression THEN statementif_statement : IF expression THEN statement ELSE statementwhile_statement : WHILE expression  DO statementexpression : simple_expressionexpression : simple_expression relational_operator simple_expressionsimple_expression : sign term  adding_operator termterm : factor multiplying_operator factorfactor : variablefactor : IDfactor : LPAREN expression RPAREN factor : NOT factorrelational_operator : EQUAL \n                           | DISTINT\n                           | LESS\n                           | GREATERsign : PLUS\n            | MINUS\n            | emptyadding_operator : PLUS\n                       | MINUS\n                       | ORmultiplying_operator : TIMES \n                            | DIV\n                            | ANDvariable : entire_variablevariable : indexed_variableindexed_variable : array_variable LBRACKET expression RBRACKETarray_variable : entire_variableentire_variable : variable_identifiervariable_identifier : IDempty :'
     
-_lr_action_items = {'SEMICOLON':([3,10,13,],[4,12,-5,]),'PROGRAM':([0,],[1,]),'COLON':([9,],[11,]),'VAR':([4,],[7,]),'INTEGER':([11,],[13,]),'ID':([1,7,],[3,9,]),'$end':([2,4,5,6,8,12,],[0,-6,-2,-1,-3,-4,]),}
+_lr_action_items = {'DO':([24,29,37,48,59,60,61,87,94,102,103,104,106,],[-66,-44,-65,-69,-48,-49,93,-51,-45,-46,-50,-47,-67,]),'LESS':([24,29,37,48,59,60,87,102,103,104,106,],[-66,64,-65,-69,-48,-49,-51,-46,-50,-47,-67,]),'READ':([15,69,93,99,118,],[25,25,25,25,25,]),'THEN':([24,29,37,48,59,60,71,87,94,102,103,104,106,],[-66,-44,-65,-69,-48,-49,99,-51,-45,-46,-50,-47,-67,]),'EQUAL':([24,29,37,48,59,60,87,102,103,104,106,],[-66,66,-65,-69,-48,-49,-51,-46,-50,-47,-67,]),'LBRACKET':([30,37,46,48,60,78,80,],[68,-68,-70,-69,-70,100,-70,]),'WHILE':([15,69,93,99,118,],[28,28,28,28,28,]),'PROGRAM':([0,],[1,]),'DIV':([24,37,48,58,59,60,87,103,106,],[-66,-65,-69,90,-48,-49,-51,-50,-67,]),'MINUS':([15,24,28,37,47,48,55,57,59,60,63,64,65,66,67,68,69,70,87,93,99,103,104,106,108,118,],[31,-66,31,-65,31,-69,83,31,-48,-49,31,-54,-53,-52,-55,31,31,31,-51,31,31,-50,-47,-67,31,31,]),'DOT':([111,120,],[120,125,]),'BEGIN':([4,5,7,9,10,11,15,16,17,18,23,51,69,72,93,99,107,118,],[-71,-71,-3,-15,-14,15,15,-17,-2,-18,-4,-71,15,-16,15,15,-19,15,]),'RPAREN':([24,29,37,48,59,60,80,87,88,94,101,102,103,104,106,108,112,113,114,115,116,117,],[-66,-44,-65,-69,-48,-49,-70,-51,103,-45,-71,-46,-50,-47,-67,-71,121,-33,-32,122,-37,-36,]),'SEMICOLON':([3,14,15,19,24,26,29,32,33,34,35,36,37,38,39,40,42,43,45,46,48,49,50,59,60,74,75,76,77,79,87,93,94,99,102,103,104,105,106,107,109,118,121,122,123,126,],[4,23,-71,51,-66,-20,-44,-38,-22,-23,-21,-25,-65,-40,69,-24,-39,-18,-26,-29,-69,-28,-27,-48,-49,-12,-8,-5,-9,-13,-51,-71,-45,-71,-46,-50,-47,-43,-67,-19,-41,-71,-30,-34,-42,-10,]),'PLUS':([15,24,28,37,47,48,55,57,59,60,63,64,65,66,67,68,69,70,87,93,99,103,104,106,108,118,],[41,-66,41,-65,41,-69,84,41,-48,-49,41,-54,-53,-52,-55,41,41,41,-51,41,41,-50,-47,-67,41,41,]),'COLON':([13,21,22,52,73,],[-71,53,-7,-71,-6,]),'ARRAY':([53,],[78,]),'$end':([2,4,5,7,8,9,10,11,16,17,18,23,51,72,107,],[0,-71,-71,-3,-1,-15,-14,-71,-17,-2,-18,-4,-71,-16,-19,]),'END':([24,26,29,32,33,34,35,36,37,38,40,42,43,45,46,48,49,50,59,60,69,87,93,94,96,99,102,103,104,105,106,107,109,118,121,122,123,],[-66,-20,-44,-38,-22,-23,-21,-25,-65,-40,-24,-39,-18,-26,-29,-69,-28,-27,-48,-49,-71,-51,-71,-45,107,-71,-46,-50,-47,-43,-67,-19,-41,-71,-30,-34,-42,]),'NUMBER':([100,125,],[111,127,]),'ELSE':([24,26,29,32,33,34,35,36,37,38,40,42,43,45,46,48,49,50,59,60,87,93,94,99,102,103,104,105,106,107,109,118,121,122,123,],[-66,-20,-44,-38,-22,-23,-21,-25,-65,-40,-24,-39,-18,-26,-29,-69,-28,-27,-48,-49,-51,-71,-45,-71,-46,-50,-47,-43,-67,-19,118,-71,-30,-34,-42,]),'WRITE':([15,69,93,99,118,],[44,44,44,44,44,]),'LPAREN':([15,25,27,28,31,41,43,44,47,56,57,62,63,64,65,66,67,68,69,70,83,84,85,86,89,90,91,92,93,99,108,117,118,],[-71,54,57,-71,-57,-56,-58,70,-71,57,-71,-58,-71,-54,-53,-52,-55,-71,-71,-71,-60,-59,57,-61,-64,-63,57,-62,-71,-71,-71,-58,-71,]),'VAR':([4,51,],[6,6,]),'TIMES':([24,37,48,58,59,60,87,103,106,],[-66,-65,-69,92,-48,-49,-51,-50,-67,]),'ID':([1,6,12,15,20,27,28,31,41,43,47,53,54,56,57,62,63,64,65,66,67,68,69,70,83,84,85,86,89,90,91,92,93,99,101,108,117,118,124,],[3,13,19,46,52,60,-71,-57,-56,-58,-71,79,80,60,-71,-58,-71,-54,-53,-52,-55,-71,46,-71,-60,-59,60,-61,-64,-63,60,-62,46,46,80,-71,-58,46,79,]),'PROCEDURE':([4,5,7,23,51,],[-71,12,-3,-4,-71,]),'IF':([15,69,93,99,118,],[47,47,47,47,47,]),'AND':([24,37,48,58,59,60,87,103,106,],[-66,-65,-69,89,-48,-49,-51,-50,-67,]),'GREATER':([24,29,37,48,59,60,87,102,103,104,106,],[-66,67,-65,-69,-48,-49,-51,-46,-50,-47,-67,]),'OF':([119,],[124,]),'DISTINT':([24,29,37,48,59,60,87,102,103,104,106,],[-66,65,-65,-69,-48,-49,-51,-46,-50,-47,-67,]),'NOT':([15,27,28,31,41,43,47,56,57,62,63,64,65,66,67,68,69,70,83,84,85,86,89,90,91,92,93,99,108,117,118,],[-71,56,-71,-57,-56,-58,-71,56,-71,-58,-71,-54,-53,-52,-55,-71,-71,-71,-60,-59,56,-61,-64,-63,56,-62,-71,-71,-71,-58,-71,]),'RBRACKET':([24,29,37,48,59,60,87,94,95,102,103,104,106,110,127,],[-66,-44,-65,-69,-48,-49,-51,-45,106,-46,-50,-47,-67,119,-11,]),'COMMA':([13,24,29,37,48,52,59,60,80,81,82,87,94,97,98,102,103,104,106,],[20,-66,-44,-65,-69,20,-48,-49,-70,-31,101,-51,-45,108,-35,-46,-50,-47,-67,]),'OR':([24,37,48,55,59,60,87,103,104,106,],[-66,-65,-69,86,-48,-49,-51,-50,-47,-67,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'variable_declaration_part':([4,],[5,]),'program':([0,],[2,]),'empty':([4,],[8,]),'block':([4,],[6,]),'variable_declaration':([7,],[10,]),}
+_lr_goto_items = {'relational_operator':([29,],[63,]),'indexed_variable':([15,27,54,56,69,85,91,93,99,101,118,],[24,24,24,24,24,24,24,24,24,24,24,]),'variable_declaration_part':([4,51,],[5,5,]),'input_variable':([54,],[82,]),'simple_statement':([15,69,93,99,118,],[26,26,26,26,26,]),'sign':([15,28,47,57,63,68,69,70,93,99,108,118,],[27,27,27,27,27,27,27,27,27,27,27,27,]),'procedure_declaration_part':([5,],[11,]),'simple_expression':([15,28,47,57,63,68,69,70,93,99,108,118,],[29,29,29,29,94,29,29,29,29,29,29,29,]),'variable_declaration':([6,],[14,]),'type_identifier':([53,124,],[74,74,]),'simple_type':([53,124,],[75,126,]),'compound_statement':([11,15,69,93,99,118,],[16,32,32,32,32,32,]),'statement_part':([11,],[17,]),'assignment_statement':([15,69,93,99,118,],[33,33,33,33,33,]),'procedure_statement':([15,69,93,99,118,],[34,34,34,34,34,]),'structured_statement':([15,69,93,99,118,],[35,35,35,35,35,]),'write_statement':([15,69,93,99,118,],[36,36,36,36,36,]),'entire_variable':([15,27,54,56,69,85,91,93,99,101,118,],[37,37,37,37,37,37,37,37,37,37,37,]),'while_statement':([15,69,93,99,118,],[38,38,38,38,38,]),'program':([0,],[2,]),'statement':([15,69,93,99,118,],[39,96,105,109,123,]),'factor':([27,56,85,91,],[58,87,58,104,]),'array_variable':([15,27,54,56,69,85,91,93,99,101,118,],[30,30,30,30,30,30,30,30,30,30,30,]),'if_statement':([15,69,93,99,118,],[42,42,42,42,42,]),'type':([53,],[76,]),'empty':([4,5,11,13,15,28,47,51,52,57,63,68,69,70,93,99,101,108,118,],[7,10,18,22,43,62,62,7,22,62,62,62,43,62,43,43,114,117,43,]),'input_variable2':([101,],[112,]),'index_range':([100,],[110,]),'variable_identifier':([15,27,54,56,69,85,91,93,99,101,118,],[48,48,48,48,48,48,48,48,48,48,48,]),'variable':([15,27,54,56,69,85,91,93,99,101,118,],[45,59,81,59,45,59,59,45,45,113,45,]),'read_statement':([15,69,93,99,118,],[40,40,40,40,40,]),'term':([27,85,],[55,102,]),'procedure_declaration':([5,],[9,]),'output_value2':([108,],[115,]),'expression':([15,28,47,57,68,69,70,93,99,108,118,],[50,61,71,88,95,50,98,50,50,116,50,]),'procedure_identifier':([15,69,93,99,118,],[49,49,49,49,49,]),'array_type':([53,],[77,]),'output_value':([70,],[97,]),'adding_operator':([55,],[85,]),'multiplying_operator':([58,],[91,]),'variable_declaration2':([13,52,],[21,73,]),'block':([4,51,],[8,72,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -28,9 +28,74 @@ del _lr_goto_items
 _lr_productions = [
   ("S' -> program","S'",1,None,None,None),
   ('program -> PROGRAM ID SEMICOLON block','program',4,'p_program','miniPas_parser.py',9),
-  ('block -> variable_declaration_part','block',1,'p_block','miniPas_parser.py',12),
+  ('block -> variable_declaration_part procedure_declaration_part statement_part','block',3,'p_block','miniPas_parser.py',12),
   ('variable_declaration_part -> empty','variable_declaration_part',1,'p_variable_declaration_part','miniPas_parser.py',15),
   ('variable_declaration_part -> VAR variable_declaration SEMICOLON','variable_declaration_part',3,'p_variable_declaration_part','miniPas_parser.py',16),
-  ('variable_declaration -> ID COLON INTEGER','variable_declaration',3,'p_variable_declaration','miniPas_parser.py',19),
-  ('empty -> <empty>','empty',0,'p_empty','miniPas_parser.py',22),
+  ('variable_declaration -> ID variable_declaration2 COLON type','variable_declaration',4,'p_variable_declaration','miniPas_parser.py',19),
+  ('variable_declaration2 -> COMMA ID variable_declaration2','variable_declaration2',3,'p_variable_declaration1','miniPas_parser.py',22),
+  ('variable_declaration2 -> empty','variable_declaration2',1,'p_variable_declaration1','miniPas_parser.py',23),
+  ('type -> simple_type','type',1,'p_type','miniPas_parser.py',26),
+  ('type -> array_type','type',1,'p_type2','miniPas_parser.py',29),
+  ('array_type -> ARRAY LBRACKET index_range RBRACKET OF simple_type','array_type',6,'p_array_type','miniPas_parser.py',32),
+  ('index_range -> NUMBER DOT DOT NUMBER','index_range',4,'p_index_range','miniPas_parser.py',35),
+  ('simple_type -> type_identifier','simple_type',1,'p_simple_type','miniPas_parser.py',38),
+  ('type_identifier -> ID','type_identifier',1,'p_type_identifier','miniPas_parser.py',42),
+  ('procedure_declaration_part -> empty','procedure_declaration_part',1,'p_procedure_declaration_part','miniPas_parser.py',47),
+  ('procedure_declaration_part -> procedure_declaration','procedure_declaration_part',1,'p_procedure_declaration_part2','miniPas_parser.py',50),
+  ('procedure_declaration -> PROCEDURE ID SEMICOLON block','procedure_declaration',4,'p_procedure_declaration','miniPas_parser.py',53),
+  ('statement_part -> compound_statement','statement_part',1,'p_statement_part','miniPas_parser.py',59),
+  ('compound_statement -> empty','compound_statement',1,'p_compound_statement','miniPas_parser.py',62),
+  ('compound_statement -> BEGIN statement SEMICOLON statement END','compound_statement',5,'p_compound_statement2','miniPas_parser.py',65),
+  ('statement -> simple_statement','statement',1,'p_statement','miniPas_parser.py',68),
+  ('statement -> structured_statement','statement',1,'p_statement2','miniPas_parser.py',71),
+  ('simple_statement -> assignment_statement','simple_statement',1,'p_simple_statement','miniPas_parser.py',76),
+  ('simple_statement -> procedure_statement','simple_statement',1,'p_simple_statemen1','miniPas_parser.py',79),
+  ('simple_statement -> read_statement','simple_statement',1,'p_simple_statemen2','miniPas_parser.py',82),
+  ('simple_statement -> write_statement','simple_statement',1,'p_simple_statemen3','miniPas_parser.py',85),
+  ('assignment_statement -> variable','assignment_statement',1,'p_assignment_statement','miniPas_parser.py',88),
+  ('assignment_statement -> expression','assignment_statement',1,'p_assignment_statement2','miniPas_parser.py',92),
+  ('procedure_statement -> procedure_identifier','procedure_statement',1,'p_procedure_statement','miniPas_parser.py',95),
+  ('procedure_identifier -> ID','procedure_identifier',1,'p_procedure_identifier','miniPas_parser.py',98),
+  ('read_statement -> READ LPAREN input_variable COMMA input_variable2 RPAREN','read_statement',6,'p_read_statement','miniPas_parser.py',100),
+  ('input_variable -> variable','input_variable',1,'p_input_variable','miniPas_parser.py',103),
+  ('input_variable2 -> empty','input_variable2',1,'p_input_variable2','miniPas_parser.py',106),
+  ('input_variable2 -> variable','input_variable2',1,'p_input_variable2','miniPas_parser.py',107),
+  ('write_statement -> WRITE LPAREN output_value COMMA output_value2 RPAREN','write_statement',6,'p_write_statement','miniPas_parser.py',110),
+  ('output_value -> expression','output_value',1,'p_output_value','miniPas_parser.py',113),
+  ('output_value2 -> empty','output_value2',1,'p_output_value2','miniPas_parser.py',116),
+  ('output_value2 -> expression','output_value2',1,'p_output_value2','miniPas_parser.py',117),
+  ('structured_statement -> compound_statement','structured_statement',1,'p_structured_statement','miniPas_parser.py',122),
+  ('structured_statement -> if_statement','structured_statement',1,'p_structured_statement2','miniPas_parser.py',125),
+  ('structured_statement -> while_statement','structured_statement',1,'p_structured_statement3','miniPas_parser.py',128),
+  ('if_statement -> IF expression THEN statement','if_statement',4,'p_if_statement','miniPas_parser.py',132),
+  ('if_statement -> IF expression THEN statement ELSE statement','if_statement',6,'p_if_statement2','miniPas_parser.py',135),
+  ('while_statement -> WHILE expression DO statement','while_statement',4,'p_while_statement','miniPas_parser.py',138),
+  ('expression -> simple_expression','expression',1,'p_expression','miniPas_parser.py',142),
+  ('expression -> simple_expression relational_operator simple_expression','expression',3,'p_expression2','miniPas_parser.py',145),
+  ('simple_expression -> sign term adding_operator term','simple_expression',4,'p_simple_expression','miniPas_parser.py',148),
+  ('term -> factor multiplying_operator factor','term',3,'p_term','miniPas_parser.py',151),
+  ('factor -> variable','factor',1,'p_factor','miniPas_parser.py',155),
+  ('factor -> ID','factor',1,'p_factor2','miniPas_parser.py',159),
+  ('factor -> LPAREN expression RPAREN','factor',3,'p_factor3','miniPas_parser.py',162),
+  ('factor -> NOT factor','factor',2,'p_factor4','miniPas_parser.py',165),
+  ('relational_operator -> EQUAL','relational_operator',1,'p_relational_operator','miniPas_parser.py',169),
+  ('relational_operator -> DISTINT','relational_operator',1,'p_relational_operator','miniPas_parser.py',170),
+  ('relational_operator -> LESS','relational_operator',1,'p_relational_operator','miniPas_parser.py',171),
+  ('relational_operator -> GREATER','relational_operator',1,'p_relational_operator','miniPas_parser.py',172),
+  ('sign -> PLUS','sign',1,'p_sign','miniPas_parser.py',175),
+  ('sign -> MINUS','sign',1,'p_sign','miniPas_parser.py',176),
+  ('sign -> empty','sign',1,'p_sign','miniPas_parser.py',177),
+  ('adding_operator -> PLUS','adding_operator',1,'p_adding_operator','miniPas_parser.py',180),
+  ('adding_operator -> MINUS','adding_operator',1,'p_adding_operator','miniPas_parser.py',181),
+  ('adding_operator -> OR','adding_operator',1,'p_adding_operator','miniPas_parser.py',182),
+  ('multiplying_operator -> TIMES','multiplying_operator',1,'p_multiplying_operator','miniPas_parser.py',185),
+  ('multiplying_operator -> DIV','multiplying_operator',1,'p_multiplying_operator','miniPas_parser.py',186),
+  ('multiplying_operator -> AND','multiplying_operator',1,'p_multiplying_operator','miniPas_parser.py',187),
+  ('variable -> entire_variable','variable',1,'p_variable','miniPas_parser.py',191),
+  ('variable -> indexed_variable','variable',1,'p_variable2','miniPas_parser.py',194),
+  ('indexed_variable -> array_variable LBRACKET expression RBRACKET','indexed_variable',4,'p_indexed_variable','miniPas_parser.py',197),
+  ('array_variable -> entire_variable','array_variable',1,'p_array_variable','miniPas_parser.py',200),
+  ('entire_variable -> variable_identifier','entire_variable',1,'p_entire_variable','miniPas_parser.py',203),
+  ('variable_identifier -> ID','variable_identifier',1,'p_variable_identifier','miniPas_parser.py',206),
+  ('empty -> <empty>','empty',0,'p_empty','miniPas_parser.py',212),
 ]
