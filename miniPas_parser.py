@@ -127,14 +127,15 @@ def p_input_variable2 (p):
                     | COMMA variable'''
     pass
 def p_write_statement(p):
-    'write_statement : WRITE LPAREN output_value COMMA output_value2 RPAREN'
+    'write_statement : WRITE LPAREN output_value  output_value2 RPAREN SEMICOLON'
     pass
 def p_output_value (p):
-    'output_value : expression'
+    '''output_value : expression
+                    | STRING'''
     pass
 def p_output_value2 (p):
     '''output_value2 : empty
-                     | expression'''
+                     | COMMA expression'''
     pass
 
 #structured statement

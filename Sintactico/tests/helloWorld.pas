@@ -7,8 +7,11 @@ begin
 
   read (b);
   write ('holiii');
+  write ('holiii');
+  write ('holiii');
+  write ('holiii');
   read (b);
-  read (b)
+  read (b);
   read (b);
   read (b);
 
