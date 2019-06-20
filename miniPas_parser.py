@@ -2,7 +2,7 @@ import ply.yacc as yacc
 from minic_lexer import tokens
 import minic_lexer
 import sys
-
+# falta la asignacion 
 VERBOSE = 1
 
 def p_program (p):
@@ -13,14 +13,14 @@ def p_block (p):
     pass
 def p_variable_declaration_part (p):
     '''variable_declaration_part : empty
-                                 | VAR variable_declaration SEMICOLON'''
+                                 | VAR variable_declaration SEMICOLON variable_declaration_part'''
     pass
 def p_variable_declaration (p):
     'variable_declaration : ID  variable_declaration2 COLON type'
     pass
 def p_variable_declaration1 (p):
     '''variable_declaration2 :  COMMA ID variable_declaration2  
-                             | empty'''
+                             | empty '''
     pass
 def p_type (p):
     'type : simple_type'
@@ -156,7 +156,7 @@ def p_if_statement2 (p):
     'if_statement : IF LPAREN expression RPAREN THEN statement ELSE statement'
     pass
 def p_while_statement(p):
-    'while_statement : WHILE expression  DO statement'
+    'while_statement : WHILE expression DO statement'
     pass
 #expression 
 def p_expression (p):

@@ -165,9 +165,7 @@ def t_IF(t):
     r'if'
     return t
 
-def t_IN(t):
-    r'in'
-    return t
+
 
 def t_INPUT(t):
     r'input'
@@ -175,6 +173,9 @@ def t_INPUT(t):
 
 def t_INTEGER(t):
     r'integer'
+    return t
+def t_IN(t):
+    r'in'
     return t
 
 def t_LABEL(t):
