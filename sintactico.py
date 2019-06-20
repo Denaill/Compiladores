@@ -3,7 +3,6 @@ import os
 import codecs
 import re
 from minic_lexer import tokens
-import minic_lexer
 from sys import stdin
 
 precedence = (
@@ -18,19 +17,19 @@ precedence = (
 )
 
 def p_program(p): #Program es una produccion la cual recibe p, otra produccion
-    '''program = block '''
+    '''program : block '''
     p[0] = program(p[1], "program")
 
 def p_constDecl(p):
-    '''constDecl = CONST constAssignmentList;'''
+    '''constDecl : CONST constAssignmentList;'''
     p[0] = constDecl(p[2])
 
 def p_constDeclEmpty(p):
-    '''constDecl = empty'''
+    '''constDecl : empty'''
     p[0] = Null()
 
 def p_constAssignmentList(p):
-    '''ID = NUMBER'''
+    '''ID : NUMBER'''
     print "constAssignmentList 1"
 
 def p_constAssignmentList2(p):
@@ -65,19 +64,19 @@ def p_statement1(p):
     '''statement : ID UPDATE expression'''
     print "statement 1"
 
-def p_statement1(p):
+def p_statement2(p):
     '''statement : CALL ID'''
     print "statement 2"
 
-def p_statement1(p):
+def p_statement3(p):
     '''statement : BEGIN statementList END'''
     print "statement 3"
 
-def p_statement1(p):
+def p_statement4(p):
     '''statement : IF condition THEN statement'''
     print "statement 4"
 
-def p_statement1(p):
+def p_statement5(p):
     '''statement : WHILE condition DO statement'''
     print "statement 5"
 
@@ -196,20 +195,15 @@ def buscarFicheros(directorio):
     print "Has escogido \"%s\" \n" %files[int(numArchivo)-1]
 
     return files[int(numArchivo)-1]
+
 # mis modificaciones 
+directorio = '/home/daniel/Documentos/Compiladores/Sintactico/' #cambiar ubicacion
+archivo = buscarFicheros(directorio)
+test = directorio+archivo
+fp = codecs.open(test,"r","utf-8")
+cadena = fp.read()
+fp.close()
+
 parser = yacc.yacc()
-
-
-if __name__ == '__main__':
-
-	if (len(sys.argv) > 1):
-		fin = sys.argv[1]
-	else:
-		fin = 'fibo.pas'
-
-	f = open(fin, 'r')
-	data = f.read()
-	#print (data)
-	parser.parse(data, tracking=True)
-	print("Amiguito, tengo el placer de informa que Tu parser reconocio correctamente todo")
-	#input()
+result = parser.parse(cadena)
+print result
