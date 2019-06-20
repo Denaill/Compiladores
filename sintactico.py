@@ -2,7 +2,8 @@ import ply.yacc as yacc
 import os
 import codecs
 import re
-from minic_lexer.py import tokens
+from minic_lexer import tokens
+import minic_lexer
 from sys import stdin
 
 precedence = (
@@ -195,3 +196,20 @@ def buscarFicheros(directorio):
     print "Has escogido \"%s\" \n" %files[int(numArchivo)-1]
 
     return files[int(numArchivo)-1]
+# mis modificaciones 
+parser = yacc.yacc()
+
+
+if __name__ == '__main__':
+
+	if (len(sys.argv) > 1):
+		fin = sys.argv[1]
+	else:
+		fin = 'fibo.pas'
+
+	f = open(fin, 'r')
+	data = f.read()
+	#print (data)
+	parser.parse(data, tracking=True)
+	print("Amiguito, tengo el placer de informa que Tu parser reconocio correctamente todo")
+	#input()
