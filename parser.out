@@ -1,1 +1,255 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    RESET
+    EOF
+    LESS
+    SIMPLE
+    TEXT
+    EXP
+    TRUE
+    MINUS
+    PACKED
+    COMMENT
+    OPENCOMMENT
+    TO
+    RPAREN
+    PLUS
+    GOTO
+    CHR
+    NIL
+    OPENCOMMENT2
+    SQR
+    OUTPUT
+    OR
+    PACK
+    FILE
+    CLOSECOMMENT2
+    LABEL
+    SUCC
+    AMPERSANT
+    ROUND
+    GET
+    WITH
+    SIN
+    INTEGER
+    TRUNC
+    FUNCTION
+    REPEAT
+    DIVIDE
+    FOR
+    ELSE
+    MAXINT
+    INPUT
+    UNTIL
+    AND
+    ARCTAN
+    DOWNTO
+    NOT
+    MOD
+    REAL
+    THEN
+    COS
+    READ
+    CHAR
+    WHILE
+    NEW
+    CASE
+    SET
+    ODD
+    WRITE
+    UNPACK
+    FALSE
+    GREATER
+    REWRITE
+    PRED
+    EOLN
+    READLN
+    BOOLEAN
+    HASHTAG
+    PUT
+    ORD
+    TYPE
+    PAGE
+    DO
+    CONST
+    EQUAL
+    DIV
+    LN
+    RECORD
+    STRING
+    DISPOSE
+    TIMES
+    ABS
+    LPAREN
+    IN
+    IF
+    WRITELN
+    DISTINT
+    SQRT
+    CLOSECOMMENT
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> PROGRAM ID SEMICOLON block
+Rule 2     block -> variable_declaration_part procedure_declaration_part statement_part
+Rule 3     variable_declaration_part -> empty
+Rule 4     variable_declaration_part -> VAR variable_declaration SEMICOLON
+Rule 5     variable_declaration -> ID COLON type
+Rule 6     variable_declaration2 -> ID COMMA variable_declaration2 COLON type
+Rule 7     type -> simple_type
+Rule 8     type -> array_type
+Rule 9     array_type -> ARRAY LBRACKET index_range RBRACKET OF simple_type
+Rule 10    index_range -> NUMBER DOT DOT NUMBER
+Rule 11    simple_type -> type_identifier
+Rule 12    type_identifier -> ID
+Rule 13    procedure_declaration_part -> empty
+Rule 14    procedure_declaration_part -> procedure_declaration
+Rule 15    procedure_declaration -> PROCEDURE ID SEMICOLON block
+Rule 16    statement_part -> compound_statement
+Rule 17    compound_statement -> empty
+Rule 18    compound_statement -> BEGIN statement SEMICOLON STATEMENT END
+Rule 19    statement -> simple_statement
+Rule 20    statement -> structured_statement
+Rule 21    simple_statement -> assignment_statement
+Rule 22    simple_statement -> procedure_statement
+Rule 23    simple_statement -> read_statement
+Rule 24    simple_statement -> write_statement
+Rule 25    assignment_statement -> variable
+Rule 26    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ABS                  : 
+AMPERSANT            : 
+AND                  : 
+ARCTAN               : 
+ARRAY                : 9
+BEGIN                : 18
+BOOLEAN              : 
+CASE                 : 
+CHAR                 : 
+CHR                  : 
+CLOSECOMMENT         : 
+CLOSECOMMENT2        : 
+COLON                : 5 6
+COMMA                : 6
+COMMENT              : 
+CONST                : 
+COS                  : 
+DISPOSE              : 
+DISTINT              : 
+DIV                  : 
+DIVIDE               : 
+DO                   : 
+DOT                  : 10 10
+DOWNTO               : 
+ELSE                 : 
+END                  : 18
+EOF                  : 
+EOLN                 : 
+EQUAL                : 
+EXP                  : 
+FALSE                : 
+FILE                 : 
+FOR                  : 
+FUNCTION             : 
+GET                  : 
+GOTO                 : 
+GREATER              : 
+HASHTAG              : 
+ID                   : 1 5 6 12 15
+IF                   : 
+IN                   : 
+INPUT                : 
+INTEGER              : 
+LABEL                : 
+LBRACKET             : 9
+LESS                 : 
+LN                   : 
+LPAREN               : 
+MAXINT               : 
+MINUS                : 
+MOD                  : 
+NEW                  : 
+NIL                  : 
+NOT                  : 
+NUMBER               : 10 10
+ODD                  : 
+OF                   : 9
+OPENCOMMENT          : 
+OPENCOMMENT2         : 
+OR                   : 
+ORD                  : 
+OUTPUT               : 
+PACK                 : 
+PACKED               : 
+PAGE                 : 
+PLUS                 : 
+PRED                 : 
+PROCEDURE            : 15
+PROGRAM              : 1
+PUT                  : 
+RBRACKET             : 9
+READ                 : 
+READLN               : 
+REAL                 : 
+RECORD               : 
+REPEAT               : 
+RESET                : 
+REWRITE              : 
+ROUND                : 
+RPAREN               : 
+SEMICOLON            : 1 4 15 18
+SET                  : 
+SIMPLE               : 
+SIN                  : 
+SQR                  : 
+SQRT                 : 
+STRING               : 
+SUCC                 : 
+TEXT                 : 
+THEN                 : 
+TIMES                : 
+TO                   : 
+TRUE                 : 
+TRUNC                : 
+TYPE                 : 
+UNPACK               : 
+UNTIL                : 
+VAR                  : 4
+WHILE                : 
+WITH                 : 
+WRITE                : 
+WRITELN              : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+STATEMENT            : 18
+array_type           : 8
+assignment_statement : 21
+block                : 1 15
+compound_statement   : 16
+empty                : 3 13 17
+index_range          : 9
+procedure_declaration : 14
+procedure_declaration_part : 2
+procedure_statement  : 22
+program              : 0
+read_statement       : 23
+simple_statement     : 19
+simple_type          : 7 9
+statement            : 18
+statement_part       : 2
+structured_statement : 20
+type                 : 5 6
+type_identifier      : 11
+variable             : 25
+variable_declaration : 4
+variable_declaration2 : 6
+variable_declaration_part : 2
+write_statement      : 24
+

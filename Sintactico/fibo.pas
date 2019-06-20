@@ -1,7 +1,6 @@
 program fibonacci;
-uses crt;
-var
- a,b,c,max:integer;
+
+var max:integer;
 begin
 clrscr;
  writeln('Serie de Fibonacci');

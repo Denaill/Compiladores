@@ -197,10 +197,10 @@ def buscarFicheros(directorio):
     return files[int(numArchivo)-1]
 
 # mis modificaciones 
-directorio = '/home/daniel/Documentos/Compiladores/Sintactico/' #cambiar ubicacion
-archivo = buscarFicheros(directorio)
-test = directorio+archivo
-fp = codecs.open(test,"r","utf-8")
+directorio = '/home/edilson/Documentos/compiladores/Compiladores/Sintactico/' #cambiar ubicacion
+#archivo = buscarFicheros(directorio)
+#test = directorio+archivo
+fp = codecs.open("Sintactico/fibo.pas","r","utf-8")
 cadena = fp.read()
 fp.close()
 
