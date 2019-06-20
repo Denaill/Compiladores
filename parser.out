@@ -14,7 +14,6 @@ Unused terminals:
     COMMENT
     OPENCOMMENT
     TO
-    RPAREN
     PLUS
     GOTO
     CHR
@@ -51,7 +50,6 @@ Unused terminals:
     REAL
     THEN
     COS
-    READ
     CHAR
     WHILE
     NEW
@@ -82,7 +80,6 @@ Unused terminals:
     DISPOSE
     TIMES
     ABS
-    LPAREN
     IN
     IF
     WRITELN
@@ -118,7 +115,13 @@ Rule 22    simple_statement -> procedure_statement
 Rule 23    simple_statement -> read_statement
 Rule 24    simple_statement -> write_statement
 Rule 25    assignment_statement -> variable
-Rule 26    empty -> <empty>
+Rule 26    assignment_statement -> expresion
+Rule 27    procedure_statement -> procedure_identifier
+Rule 28    read_statement -> READ LPAREN input_variable COMMA input_variable2 RPAREN
+Rule 29    input_variable -> variable
+Rule 30    input_variable2 -> empty
+Rule 31    input_variable2 -> variable
+Rule 32    empty -> <empty>
 
 Terminals, with rules where they appear
 
@@ -135,7 +138,7 @@ CHR                  :
 CLOSECOMMENT         : 
 CLOSECOMMENT2        : 
 COLON                : 5 6
-COMMA                : 6
+COMMA                : 6 28
 COMMENT              : 
 CONST                : 
 COS                  : 
@@ -169,7 +172,7 @@ LABEL                :
 LBRACKET             : 9
 LESS                 : 
 LN                   : 
-LPAREN               : 
+LPAREN               : 28
 MAXINT               : 
 MINUS                : 
 MOD                  : 
@@ -193,7 +196,7 @@ PROCEDURE            : 15
 PROGRAM              : 1
 PUT                  : 
 RBRACKET             : 9
-READ                 : 
+READ                 : 28
 READLN               : 
 REAL                 : 
 RECORD               : 
@@ -201,7 +204,7 @@ REPEAT               :
 RESET                : 
 REWRITE              : 
 ROUND                : 
-RPAREN               : 
+RPAREN               : 28
 SEMICOLON            : 1 4 15 18
 SET                  : 
 SIMPLE               : 
@@ -233,10 +236,14 @@ array_type           : 8
 assignment_statement : 21
 block                : 1 15
 compound_statement   : 16
-empty                : 3 13 17
+empty                : 3 13 17 30
+expresion            : 26
 index_range          : 9
+input_variable       : 28
+input_variable2      : 28
 procedure_declaration : 14
 procedure_declaration_part : 2
+procedure_identifier : 27
 procedure_statement  : 22
 program              : 0
 read_statement       : 23
@@ -247,7 +254,7 @@ statement_part       : 2
 structured_statement : 20
 type                 : 5 6
 type_identifier      : 11
-variable             : 25
+variable             : 25 29 31
 variable_declaration : 4
 variable_declaration2 : 6
 variable_declaration_part : 2

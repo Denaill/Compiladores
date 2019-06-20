@@ -87,6 +87,66 @@ def p_assignment_statement (p):
     'assignment_statement : variable'
     pass
 
+def p_assignment_statement2 (p):
+    'assignment_statement : expresion'
+    pass
+def p_procedure_statement(p):
+    'procedure_statement : procedure_identifier'
+    pass
+def p_read_statement (p):
+    'read_statement : READ LPAREN input_variable COMMA input_variable2 RPAREN'
+    pass
+def p_input_variable (p):
+    'input_variable : variable'
+    pass
+def p_input_variable2 (p):
+    '''input_variable2 : empty
+                    | variable'''
+    pass
+def p_write_statement(p):
+    'write_statement : WRITE LPAREN output_value comma output_variable2 RPAREN'
+    pass
+def p_output_value (p):
+    'output_value : expression'
+    pass
+def p_output_value2 (p):
+    '''output_value2 : empty
+                     | expression'''
+    pass
+
+#structured statement
+def p_structured_statement(p):
+    'structured_statement : compound_statement'
+    pass
+def p_structured_statement2(p):
+    'structured_statement : if_statement'
+    pass
+def p_structured_statement3(p):
+    'structured_statement : while_statement'
+    pass
+
+def p_if_statement (p):
+    'if_statement : IF expression THEN statement'
+    pass
+def p_if_statement2 (p):
+    'if_statement : IF expression THEN statement ELSE statement'
+    pass
+def p_while_statement(p):
+    'while_statement : WHILE expression  DO statement'
+    pass
+#expression 
+def p_expression (p):
+    'expression : simple_expression'
+    pass
+def p_expression2 (p):
+    'expression : simple_expression relational_operator simple_expression'
+    pass
+def P_simple_expression (p):
+    'simple_expression : sign term  adding_operator term' # ojo aqui, recordad el e
+    pass
+def p_term (p):
+    'term : factor multiplying_operator factor' # ojo aqui, recordad el e
+    pass
 
 
 
