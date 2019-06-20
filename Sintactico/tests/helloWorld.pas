@@ -80,10 +80,11 @@ begin
        read(b);
        read(b);
        read(b);
+       a:=1;
    else
      read(b);
      while a < 6 do 
      write (a);
-    
+    a:=b;
 end.
 

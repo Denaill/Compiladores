@@ -105,12 +105,10 @@ def p_simple_statemen3 (p):
     'simple_statement : write_statement'
     pass
 def p_assignment_statement (p):
-    'assignment_statement : variable'
+    'assignment_statement : variable COLON EQUAL expression SEMICOLON'
     pass
 
-def p_assignment_statement2 (p):
-    'assignment_statement : expression'
-    pass
+
 def p_procedure_statement(p):
     'procedure_statement : procedure_identifier'
     pass
