@@ -13,10 +13,10 @@ def p_block (p):
     pass
 def p_variable_declaration_part (p):
     '''variable_declaration_part : empty
-    | VAR variable_declaration SEMICOLON'''
+                                 | VAR variable_declaration SEMICOLON'''
     pass
 def p_variable_declaration (p):
-    'variable_declaration : ID variable_declaration2 COLON type'
+    'variable_declaration : ID  variable_declaration2 COLON type'
     pass
 def p_variable_declaration1 (p):
     '''variable_declaration2 :  COMMA ID variable_declaration2  
@@ -70,7 +70,7 @@ def p_statement (p):
     'statement : simple_statement'
     pass
 def p_statement4(p):
-    'statement : statement SEMICOLON simple_statement'
+    'statement : statement  simple_statement'
     pass
 def p_statement5(p):
     'statement : statement structured_statement'
