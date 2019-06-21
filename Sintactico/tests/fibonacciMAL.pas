@@ -12,10 +12,12 @@ begin
  write(a);
  write(b);
          while (a+b)<max do
+        begin
                 c:=(a+b);
                  write(c);
                  a:=b;
                  b:=c;
+        end
  if (a >= b) then 
         a := a+b;
 else 

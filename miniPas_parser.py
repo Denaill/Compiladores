@@ -190,6 +190,9 @@ def p_if_statement2 (p):
 def p_while_statement(p):
     'while_statement : WHILE expression DO statement'
     pass
+def p_while_statement2(p):
+    'while_statement : WHILE expression DO BEGIN statement END SEMICOLON'
+    pass
 #expression 
 def p_expression (p):
     'expression : simple_expression'
