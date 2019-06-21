@@ -372,7 +372,10 @@ def t_NUMBER(t):
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z_d_0-9]*'
     return t
-
+def t_comentario_multi(t):
+    r'\(\*(.|\n)*?\*\) | \{(.|\n)*?\}'
+    t.lexer.lineno += t.value.count('\n')
+    pass
 t_ignore = ' \t'
 def t_comments_C99(t):
     r'//(.)*?\n'

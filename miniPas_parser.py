@@ -45,7 +45,8 @@ def p_simple_type (p):
 # dudas en este identificador
 def p_type_identifier (p):
     '''type_identifier : INTEGER
-                       | CHAR'''
+                       | CHAR
+                       | BOOLEAN'''
     pass
 
 #procedure 
@@ -62,11 +63,27 @@ def p_procedure_declaration (p):
 def p_function_declaration (p):
     'function_declaration : FUNCTION ID LPAREN variable_declaration RPAREN COLON type SEMICOLON variable_declaration_part'
     pass
-
+# call functions
+def p_call_function (p):
+    'call_function : ID LPAREN args RPAREN SEMICOLON'
+    pass
+def p_args (p):
+    '''args : args args2
+            | empty'''
+def p_args2 (p):
+    '''args2 : empty 
+            | COMMA args
+            | NUMBER COMMA args
+            | STRING  args
+            | ID
+            | NUMBER
+            | STRING'''
+    pass
+            
 # statement part 
 ## problema aqui. no reconoce mas de una statement 
 def p_statement_part (p):
-    'statement_part : compound_statement'
+    'statement_part : compound_statement '
     pass
 # revisar 
 """ def p_compound_statement (p):
@@ -117,6 +134,9 @@ def p_simple_statemen2 (p):
     pass
 def p_simple_statemen3 (p):
     'simple_statement : write_statement'
+    pass
+def p_simple_statemen4 (p):
+    'simple_statement : call_function'
     pass
 def p_assignment_statement (p):
     'assignment_statement : variable COLON EQUAL expression SEMICOLON'
@@ -211,7 +231,9 @@ def p_relational_operator (p):
     '''relational_operator : EQUAL 
                            | DISTINT
                            | LESS
-                           | GREATER'''
+                           | GREATER
+                           | GREATER EQUAL
+                           | LESS EQUAL'''
     pass
 def p_sign (p):
     '''sign : PLUS
