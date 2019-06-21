@@ -13,7 +13,8 @@ def p_block (p):
     pass
 def p_variable_declaration_part (p):
     '''variable_declaration_part : empty
-                                 | VAR variable_declaration SEMICOLON variable_declaration_part'''
+                                 | VAR variable_declaration SEMICOLON variable_declaration_part 
+                                 | CONST const_declaration SEMICOLON variable_declaration_part'''
     pass
 def p_variable_declaration (p):
     'variable_declaration : ID  variable_declaration2 COLON type'
@@ -21,6 +22,10 @@ def p_variable_declaration (p):
 def p_variable_declaration1 (p):
     '''variable_declaration2 :  COMMA ID variable_declaration2  
                              | empty '''
+    pass
+def p_const_declaration(p):
+    '''const_declaration : ID EQUAL NUMBER
+                         | ID EQUAL STRING'''
     pass
 def p_type (p):
     'type : simple_type'
@@ -48,10 +53,14 @@ def p_procedure_declaration_part (p):
     'procedure_declaration_part : empty'
     pass
 def p_procedure_declaration_part2 (p):
-    'procedure_declaration_part : procedure_declaration'
+    '''procedure_declaration_part : procedure_declaration
+                                  | function_declaration'''
     pass
 def p_procedure_declaration (p):
     'procedure_declaration : PROCEDURE ID SEMICOLON block'
+    pass
+def p_function_declaration (p):
+    'function_declaration : FUNCTION ID LPAREN variable_declaration RPAREN COLON type SEMICOLON variable_declaration_part'
     pass
 
 # statement part 
@@ -64,7 +73,11 @@ def p_statement_part (p):
     'compound_statement : empty'
     pass """
 def p_compound_statement (p):
-    'compound_statement : BEGIN statement  END DOT'
+    'compound_statement : BEGIN statement  END DOT compound_statement2'
+    pass
+def p_compound_statement2 (p):
+    '''compound_statement2 : empty
+                            | compound_statement '''
     pass
 def p_statement (p):
     'statement : simple_statement'
@@ -89,6 +102,7 @@ def p_statement3 (p):
 def p_statement3e (p):
     'statement3 : empty'
     pass
+## call functions
 
     
 # statement 
@@ -259,7 +273,7 @@ if __name__ == '__main__':
 	if (len(sys.argv) > 1):
 		fin = sys.argv[1]
 	else:
-		fin = 'Sintactico/tests/helloWorld.pas'
+		fin = 'Sintactico/tests/fibonacciMAL.pas'
 
 	f = open(fin, 'r')
 	data = f.read()

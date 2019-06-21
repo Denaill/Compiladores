@@ -48,8 +48,8 @@ t_COLON   = r':'
 t_AMPERSANT = r'\&'
 t_HASHTAG = r'\#'
 t_DOT = r'\.'
-t_SIMPLE = r'\''
 t_STRING = r'\'[a-zA-Z_][a-zA-Z_0-9 ]*\''
+t_SIMPLE = r'\''
 t_COMMENT = r'\//'
 t_OPENCOMMENT = r'\(\*'
 t_CLOSECOMMENT = r'\*\)'
@@ -374,7 +374,10 @@ def t_ID(t):
     return t
 
 t_ignore = ' \t'
-    
+def t_comments_C99(t):
+    r'//(.)*?\n'
+    t.lexer.lineno += 1
+
 def t_error(t):
    # print ("Lexical error: " + str(t.value[0]))
     t.lexer.skip(1)
